@@ -1,7 +1,6 @@
 {
   config,
   pkgs,
-  inputs,
   ...
 }:
 
@@ -35,16 +34,10 @@ in
   imports = [
     ./modules/neovim.nix
     ./modules/claude_code.nix
-    inputs.noctalia.homeModules.default
   ];
   home.username = "sam";
   home.homeDirectory = "/home/sam";
   home.stateVersion = "26.05";
-
-  # programs.noctalia = {
-  #   enable = true;
-  #   systemd.enable = true;
-  # };
 
   programs.git = {
     enable = true;

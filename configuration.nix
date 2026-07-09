@@ -130,11 +130,13 @@
   fonts.packages = with pkgs; [
     nerd-fonts._0xproto
     nerd-fonts.symbols-only
+
   ];
 
   fonts.fontconfig.defaultFonts.monospace = [
     "0xProto Nerd Font Mono"
     "Symbols Nerd Font Mono"
+    "GohuFont Nerd Font Mono"
   ];
 
   # Some programs need SUID wrappers, can be configured further or are
