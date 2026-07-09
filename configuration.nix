@@ -130,6 +130,7 @@
   fonts.packages = with pkgs; [
     nerd-fonts._0xproto
     nerd-fonts.symbols-only
+    nerd-fonts.gohufont
 
   ];
 
