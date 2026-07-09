@@ -1,0 +1,15 @@
+[general]
+import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/vscode.toml"]
+
+[font]
+size = 11.0
+
+[font.normal]
+family = "0xProto Nerd Font Mono"
+style = "Regular"
+
+[[keyboard.bindings]]
+key = "Return"
+mods = "Shift"
+chars = "\u001B\r"
+

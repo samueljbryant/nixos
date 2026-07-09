@@ -1,0 +1,27 @@
+* {
+  font-family: "0xProto Nerd Font Mono", monospace;
+  font-size: 13px;
+  min-height: 0;
+}
+
+window#waybar {
+  background: rgba(30, 30, 46, 0.85);
+  color: #cdd6f4;
+}
+
+#workspaces button {
+  padding: 0 8px;
+  color: #cdd6f4;
+  background: transparent;
+}
+#workspaces button.active {
+  background: #585b70;
+  border-radius: 6px;
+}
+
+#clock, #cpu, #memory, #battery, #network, #pulseaudio, #tray, #window {
+  padding: 0 10px;
+}
+
+#battery.warning  { color: #f9e2af; }
+#battery.critical { color: #f38ba8; }
