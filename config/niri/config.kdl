@@ -3,7 +3,7 @@
 
 // Startup
 spawn-at-startup "waybar"
-spawn-sh-at-startup "swaybg -m fill -i ~/Pictures/mountain.jpg"
+spawn-sh-at-startup "swaybg -m fill -i ~/nixos_dotfiles/config/niri/backgrounds/japan.png"
 
 input {
     keyboard {
