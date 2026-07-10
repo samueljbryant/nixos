@@ -10,6 +10,19 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
+  # limit the number of nix generations we track, cosmetic only
+  boot.loader.systemd-boot.configurationLimit = 10;
+
+  # Clean up generations older than 30d, runs weekly
+  nix.gc = {
+    automatic = true;
+    dates = "weekly";
+    options = "--delete-older-than 30d";
+  };
+
+  # dedup identical files in the store
+  nix.settings.auto-optimise-store = true;
+
   # Enable rest mode on this laptop
   boot.resumeDevice = "/dev/vg/swap";
 
