@@ -110,6 +110,7 @@ in
     posting
     redis
     zig
+    proton-vpn
 
     # niri
     fuzzel
