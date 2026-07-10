@@ -76,10 +76,16 @@ in
       initpy = "cp -rT ~/nixos_dotfiles/templates/python . && direnv allow";
       initzig = "cp -rT ~/nixos_dotfiles/templates/zig . && direnv allow";
     };
-    # initExtra = ''
-    #   PS1='\u in \w \$'
-    # '';
+    initExtra = ''
+      source ${pkgs.blesh}/share/blesh/ble.sh
+    '';
   };
+
+  # More bash stuff
+  programs.starship.enable = true;
+  programs.fzf.enable = true;
+  programs.zoxide.enable = true;
+  programs.atuin.enable = true;
 
   # Auto-load per-project dev shells (flake devShells) when you cd into a
   # project directory containing a .envrc with `use flake`.
