@@ -82,12 +82,12 @@ in
   };
 
   # More bash stuff
-  programs.starship = {
-    enable = true;
-    settings = {
-      add_newline = false;
-    };
-  };
+  # programs.starship = {
+  #   enable = true;
+  #   settings = {
+  #     add_newline = false;
+  #   };
+  # };
   programs.fzf.enable = true;
   programs.zoxide.enable = true;
   programs.atuin.enable = true;
