@@ -6,14 +6,21 @@
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils, ... }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      ...
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = import nixpkgs { inherit system; };
 
         # Pin the interpreter declaratively. Change to python311/python312/etc.
         # per project — this is the reproducible part.
-        python = pkgs.python313;
+        python = pkgs.python314;
 
         # Native libraries that binary wheels (numpy, pydantic-core, greenlet,
         # playwright, ...) dlopen at runtime. A nixpkgs Python can't lean on
@@ -27,7 +34,10 @@
       in
       {
         devShells.default = pkgs.mkShell {
-          packages = [ python pkgs.uv ];
+          packages = [
+            python
+            pkgs.uv
+          ];
 
           env = {
             # Make uv use THIS interpreter instead of downloading its own.
@@ -38,5 +48,6 @@
             LD_LIBRARY_PATH = pkgs.lib.makeLibraryPath libs;
           };
         };
-      });
+      }
+    );
 }
