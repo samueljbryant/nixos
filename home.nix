@@ -89,6 +89,7 @@ in
   #     add_newline = false;
   #   };
   # };
+  programs.supercollider = true;
   programs.fzf.enable = true;
   programs.zoxide.enable = true;
   programs.atuin.enable = true;

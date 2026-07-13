@@ -129,6 +129,8 @@
       libxrandr
       libxcb
       libgbm
+      # supercollider
+      # supercollider
     ];
   };
 
