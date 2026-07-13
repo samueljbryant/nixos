@@ -155,10 +155,10 @@
   nixpkgs.config.allowUnfree = true;
 
   fonts.packages = with pkgs; [
-    nerd-fonts."m+"
     nerd-fonts._0xproto
     nerd-fonts.symbols-only
     nerd-fonts.gohufont
+    nerd-fonts.victor-mono
 
   ];
 
