@@ -156,7 +156,7 @@
 
   fonts.packages = with pkgs; [
     nerd-fonts."m+"
-    # nerd-fonts._0xproto
+    nerd-fonts._0xproto
     nerd-fonts.symbols-only
     nerd-fonts.gohufont
 
