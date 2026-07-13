@@ -27,11 +27,14 @@ end
 local caps = vim.lsp.protocol.make_client_capabilities()
 caps.workspace.didChangeWatchedFiles.dynamicRegistration = true
 
+-- Resolve sc_lsp from PATH so the in-development binary comes from the project's
+-- direnv/flake dev shell (see templates/supercollider). Only attach where a
+-- SuperCollider.toml marks the root, i.e. dirs bootstrapped with `initsc`.
 lspconfig("sc_lsp", {
-  cmd = { "/home/sam/Development/work/projects/sc_lsp/target/release/sc_lsp" },
+  cmd = { "sc_lsp" },
   capabilities = caps,
   filetypes = { "supercollider", "scd", "sc" },
-  root_markers = { "SuperCollider.toml", ".git" },
+  root_markers = { "SuperCollider.toml" },
 })
 
 lspconfig("lua_ls", {

@@ -1,0 +1,4 @@
+# Marks this directory as a SuperCollider project root.
+# nvim's sc_lsp uses this file as its root marker, so the language server only
+# attaches inside directories that contain it. Add sc_lsp config keys here as
+# the server grows.

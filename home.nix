@@ -76,6 +76,7 @@ in
       initrs = "cp -rT ~/nixos_dotfiles/templates/rust . && direnv allow";
       initpy = "cp -rT ~/nixos_dotfiles/templates/python . && direnv allow";
       initzig = "cp -rT ~/nixos_dotfiles/templates/zig . && direnv allow";
+      initsc = "cp -rT ~/nixos_dotfiles/templates/supercollider . && direnv allow";
       # Launch SC's terminal tools under pw-jack so scsynth finds PipeWire's libjack.
       # (scide is wrapped in home.packages, so no alias needed for the IDE.)
       sclang = "pw-jack sclang";
