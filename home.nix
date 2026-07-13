@@ -77,10 +77,6 @@ in
       initpy = "cp -rT ~/nixos_dotfiles/templates/python . && direnv allow";
       initzig = "cp -rT ~/nixos_dotfiles/templates/zig . && direnv allow";
       initsc = "cp -rT ~/nixos_dotfiles/templates/supercollider . && direnv allow";
-      # Launch SC's terminal tools under pw-jack so scsynth finds PipeWire's libjack.
-      # (scide is wrapped in home.packages, so no alias needed for the IDE.)
-      sclang = "pw-jack sclang";
-      scsynth = "pw-jack scsynth";
     };
     # initExtra = ''
     #   source ${pkgs.blesh}/share/blesh/ble.sh
@@ -127,18 +123,23 @@ in
     swaybg
 
     # audio
-    # Wrap SuperCollider's IDE so `scide` launches under pw-jack (needed on NixOS
-    # so scsynth can find PipeWire's libjack). sclang/scsynth stay as plain
-    # symlinks — their pw-jack aliases live in programs.bash.shellAliases above.
-    # The wrapped scide works from app launchers too, not just the shell.
+    # Wrap SuperCollider's entry-point binaries so they launch under pw-jack
+    # (needed on NixOS so scsynth can find PipeWire's libjack). Wrapping at the
+    # package level — rather than via shell aliases — means ANY process that runs
+    # these from PATH gets the wrapper: app launchers AND subprocesses like the
+    # sclang that ScNvim spawns (which then boots scsynth as a child that inherits
+    # pw-jack's LD_LIBRARY_PATH). pw-jack is idempotent, so the double-wrap when a
+    # wrapped sclang spawns a wrapped scsynth is harmless.
     (symlinkJoin {
       name = "supercollider-pw-jack";
       paths = [ supercollider-with-sc3-plugins ];
       nativeBuildInputs = [ makeWrapper ];
       postBuild = ''
-        rm $out/bin/scide
-        makeWrapper ${pipewire.jack}/bin/pw-jack $out/bin/scide \
-          --add-flags ${supercollider-with-sc3-plugins}/bin/scide
+        for bin in scide sclang scsynth; do
+          rm $out/bin/$bin
+          makeWrapper ${pipewire.jack}/bin/pw-jack $out/bin/$bin \
+            --add-flags ${supercollider-with-sc3-plugins}/bin/$bin
+        done
       '';
     })
   ];
