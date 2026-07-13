@@ -39,10 +39,6 @@ in
   home.homeDirectory = "/home/sam";
   home.stateVersion = "26.05";
 
-  home.pkgs = with pkgs; [
-    supercollider-with-sc3-plugins
-  ];
-
   programs.git = {
     enable = true;
     settings = {
@@ -124,6 +120,9 @@ in
     wl-clipboard
     waybar
     swaybg
+
+    # audio
+    supercollider-with-sc3-plugins
   ];
 
   # Notifications
