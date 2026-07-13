@@ -92,7 +92,7 @@ in
   # programs.fzf.enable = true;
   # programs.zoxide.enable = true;
   # programs.atuin.enable = true;
-  programs.supercollider.enable = true;
+  # programs.supercollider.enable = true;
 
   # Auto-load per-project dev shells (flake devShells) when you cd into a
   # project directory containing a .envrc with `use flake`.
