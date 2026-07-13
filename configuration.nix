@@ -130,7 +130,7 @@
       libxcb
       libgbm
       # supercollider
-      # supercollider
+      supercollider
     ];
   };
 
