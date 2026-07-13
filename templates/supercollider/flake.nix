@@ -12,19 +12,13 @@
         pkgs = import nixpkgs { inherit system; };
       in
       {
+        # The in-development sc_lsp is deliberately NOT packaged in Nix while it's
+        # unstable. Its binary is put on PATH in .envrc (which handles the
+        # debug/release profile toggle in plain bash — see that file). This shell
+        # is just the direnv anchor + home for any real Nix tooling you add later
+        # (sclang, formatters, and eventually a packaged sc_lsp).
         devShells.default = pkgs.mkShell {
-          # The language server is still unstable, so we deliberately DON'T package
-          # it with Nix. Instead we point PATH at the binary you build imperatively
-          # with cargo in its own repo (bootstrapped via `initrs`). Rebuild there
-          # with `cargo build --release` and the new binary is picked up on the next
-          # shell entry — no nixos-rebuild. Swap `release` -> `debug` below if you
-          # want to attach faster iterative builds.
-          #
-          # nvim resolves `sc_lsp` from PATH (see config/nvim/.../lspconfig.lua), so
-          # the server only attaches in directories where this shell is active.
-          shellHook = ''
-            export PATH="$HOME/Development/work/projects/sc_lsp/target/release:$PATH"
-          '';
+          packages = [ ];
         };
       });
 }
