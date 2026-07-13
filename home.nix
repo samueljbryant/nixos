@@ -76,6 +76,10 @@ in
       initrs = "cp -rT ~/nixos_dotfiles/templates/rust . && direnv allow";
       initpy = "cp -rT ~/nixos_dotfiles/templates/python . && direnv allow";
       initzig = "cp -rT ~/nixos_dotfiles/templates/zig . && direnv allow";
+      # Launch SC's terminal tools under pw-jack so scsynth finds PipeWire's libjack.
+      # (scide is wrapped in home.packages, so no alias needed for the IDE.)
+      sclang = "pw-jack sclang";
+      scsynth = "pw-jack scsynth";
     };
     # initExtra = ''
     #   source ${pkgs.blesh}/share/blesh/ble.sh
@@ -122,7 +126,20 @@ in
     swaybg
 
     # audio
-    supercollider-with-sc3-plugins
+    # Wrap SuperCollider's IDE so `scide` launches under pw-jack (needed on NixOS
+    # so scsynth can find PipeWire's libjack). sclang/scsynth stay as plain
+    # symlinks — their pw-jack aliases live in programs.bash.shellAliases above.
+    # The wrapped scide works from app launchers too, not just the shell.
+    (symlinkJoin {
+      name = "supercollider-pw-jack";
+      paths = [ supercollider-with-sc3-plugins ];
+      nativeBuildInputs = [ makeWrapper ];
+      postBuild = ''
+        rm $out/bin/scide
+        makeWrapper ${pipewire.jack}/bin/pw-jack $out/bin/scide \
+          --add-flags ${supercollider-with-sc3-plugins}/bin/scide
+      '';
+    })
   ];
 
   # Notifications

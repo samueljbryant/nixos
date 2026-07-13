@@ -80,6 +80,9 @@
     jack.enable = true;
   };
 
+  # Realtime scheduling for audio (avoids xruns/crackle). Recommended with PipeWire.
+  security.rtkit.enable = true;
+
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
 
@@ -141,6 +144,7 @@
     alacritty
     git
     less
+    pipewire.jack # provides `pw-jack`, the wrapper that lets JACK apps (e.g. SuperCollider) find PipeWire's libjack
   ];
 
   nix.settings.experimental-features = [
