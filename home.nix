@@ -39,6 +39,10 @@ in
   home.homeDirectory = "/home/sam";
   home.stateVersion = "26.05";
 
+  home.pkgs = with pkgs; [
+    supercollider-with-sc3-plugins
+  ];
+
   programs.git = {
     enable = true;
     settings = {
