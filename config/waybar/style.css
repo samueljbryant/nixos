@@ -1,25 +1,55 @@
+/* Colors  (ashes dark)*/
+@define-color background #1c2023;
+@define-color foreground #c7ccd1;
+
+/* Active Colors */
+@define-color text #1c2023;
+@define-color cursor #c7ccd1;
+
+/* Normal Colors */
+@define-color black   #1c2023;
+@define-color red     #c7ae95;
+@define-color green   #95c7ae;
+@define-color yellow  #aec795;
+@define-color blue    #ae95c7;
+@define-color magenta #c795ae;
+@define-color cyan    #95aec7;
+@define-color white   #c7ccd1;
+
+/* Bright Colors */
+@define-color black-bright   #747c84;
+@define-color red-bright     #c7ae95;
+@define-color green-bright   #95c7ae;
+@define-color yellow-bright  #aec795;
+@define-color blue-bright    #ae95c7;
+@define-color magenta-bright #c795ae;
+@define-color cyan-bright    #95aec7;
+@define-color white-bright   #f3f4f5;
+
 * {
   font-family: "0xProto Nerd Font Mono", monospace;
-  font-size: 13px;
+  font-size: 11px;
   min-height: 0;
 }
 
 window#waybar {
-  background: rgba(30, 30, 46, 0.85);
-  color: #cdd6f4;
+  background: @background;
+  color: @white;
 }
 
 #workspaces button {
-  padding: 0 8px;
+  padding: 0 2px;
   color: #cdd6f4;
   background: transparent;
 }
+
 #workspaces button.active {
-  background: #585b70;
-  border-radius: 6px;
+  background: @black-bright;
+  border-radius: 0px;
 }
 
 #clock, #cpu, #memory, #battery, #network, #pulseaudio, #tray, #window {
+  background: @background;
   padding: 0 10px;
 }
 

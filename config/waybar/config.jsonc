@@ -1,7 +1,7 @@
 {
   "layer": "top",
   "position": "top",
-  "height": 30,
+  "height": 20,
   "spacing": 6,
 
   // niri-native modules — this is what stock waybar lacks
@@ -28,7 +28,7 @@
     "format-wifi": " {essid}",
     "format-ethernet": " wired",
     "format-disconnected": " off",
-    "tooltip-format": "{ifname}: {ipaddr}"
+    "tooltip-format": "{ifname}: {ipaddr}",
   },
   // pulseaudio module talks to your pipewire-pulse; on-click mutes via wpctl
   "pulseaudio": {

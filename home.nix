@@ -198,4 +198,11 @@ in
     source = create_symlink "${dotfiles}/${subpath}";
   }) configs;
 
+  # Posting looks for custom themes in XDG_DATA_HOME (~/.local/share), NOT
+  # ~/.config — so this uses xdg.dataFile, not the configs map above. Same
+  # out-of-store symlink trick: drop new *.yaml theme files in the source dir
+  # and posting hot-reloads them; no rebuild needed.
+  xdg.dataFile."posting/themes".source =
+    create_symlink "${dotfiles}/posting-themes";
+
 }

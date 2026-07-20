@@ -1,0 +1,17 @@
+name: my-theme
+# Posting merges these over its defaults, so you only need to set what you want
+# to change. See https://posting.sh/guide/themes/ for every available key.
+primary: '#8aadf4'
+secondary: '#8bd5ca'
+accent: '#c6a0f6'
+background: '#24273a'
+surface: '#363a4f'
+error: '#ed8796'
+success: '#a6da95'
+warning: '#eed49f'
+
+# Optional finer-grained control:
+# text_area:
+#   cursor: '#24273a on #f4dbd6'
+#   selection: 'on #494d64'
+# syntax: catppuccin-macchiato
