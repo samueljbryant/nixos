@@ -74,7 +74,6 @@ in
       vi = "nvim";
       vim = "nvim";
       nrs = "sudo nixos-rebuild switch --flake ~/nixos_dotfiles#nixos-laptop";
-      checkhome = "nix-instantiate --parse /home/sam/nixos_dotfiles/home.nix >/dev/null && echo 'HOME OK'";
       alre = "touch ~/.config/alacritty/alacritty.toml";
       fbg = "cd ~/Development/work/fbg-cloud-server";
       initrs = "cp -rT ~/nixos_dotfiles/templates/rust . && direnv allow";
@@ -122,6 +121,9 @@ in
     wl-clipboard
     waybar
     swaybg
+
+    # bash
+    bash-completion
 
     # audio
     # Wrap SuperCollider's entry-point binaries so they launch under pw-jack
