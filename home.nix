@@ -84,13 +84,16 @@ in
     # '';
   };
 
-  # More bash stuff
-  programs.starship = {
-    enable = true;
-    settings = {
-      add_newline = false;
-    };
-  };
+  # More bash stuff.
+  # enable = true just wires `starship init bash` into bashrc. We do NOT set
+  # `settings` (which would make home-manager generate ~/.config/starship.toml
+  # from Nix and shadow the hand-tuned file). Instead the native toml is
+  # symlinked via the `configs` map like every other tool. But starship's
+  # default config path is ~/.config/starship.toml (a bare file), not
+  # ~/.config/starship/ (a dir), so it never sees the symlinked directory —
+  # STARSHIP_CONFIG points it at the file inside that dir.
+  programs.starship.enable = true;
+  home.sessionVariables.STARSHIP_CONFIG = "${config.xdg.configHome}/starship/starship.toml";
   # programs.fzf.enable = true;
   # programs.zoxide.enable = true;
   # programs.atuin.enable = true;
