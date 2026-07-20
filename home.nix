@@ -125,7 +125,7 @@ in
     swaybg
 
     # bash
-    # bash-completion
+    bash-completion
 
     # audio
     # Wrap SuperCollider's entry-point binaries so they launch under pw-jack
