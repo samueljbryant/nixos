@@ -74,7 +74,7 @@ in
       vi = "nvim";
       vim = "nvim";
       nrs = "sudo nixos-rebuild switch --flake ~/nixos_dotfiles#nixos-laptop";
-      checkhome = "nix-instantiate --parse /home/sam/nixos_dotfiles/home.nix";
+      checkhome = "nix-instantiate --parse /home/sam/nixos_dotfiles/home.nix >/dev/null && echo 'HOME OK'";
       alre = "touch ~/.config/alacritty/alacritty.toml";
       fbg = "cd ~/Development/work/fbg-cloud-server";
       initrs = "cp -rT ~/nixos_dotfiles/templates/rust . && direnv allow";
@@ -82,9 +82,6 @@ in
       initzig = "cp -rT ~/nixos_dotfiles/templates/zig . && direnv allow";
       initsc = "cp -rT ~/nixos_dotfiles/templates/supercollider . && direnv allow";
     };
-    # initExtra = ''
-    #   source ${pkgs.blesh}/share/blesh/ble.sh
-    # '';
   };
 
   # More bash stuff.
@@ -94,6 +91,7 @@ in
   # itself, colliding with our symlink. With settings unset the module leaves
   # that path free, and the `configs` map symlinks our hand-tuned toml there.
   programs.starship.enable = true;
+  programs.bash-completion.enable = true;
   # programs.fzf.enable = true;
   # programs.zoxide.enable = true;
   # programs.atuin.enable = true;
