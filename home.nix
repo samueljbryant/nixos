@@ -28,7 +28,7 @@ let
     posting = "posting";
     niri = "niri";
     waybar = "waybar";
-    startship = "starship";
+    starship = "starship";
   };
 in
 {
