@@ -1,0 +1,28 @@
+name: ashes-dark
+# Posting merges these over its defaults, so you only need to set what you want
+# to change. See https://posting.sh/guide/themes/ for every available key.
+primary: '#ae95c7'
+secondary: '#95c7ae'
+accent: '#95aec7'
+background: '#1c2023'
+surface: '#1c2023'
+error: '#c795ae'
+success: '#95c7ae'
+warning: '#c7ae95'
+
+method:
+  get: "bold #95aec7"
+  post: "bold #95c7ae"
+  put: "bold #ae95c7"
+  delete: "bold #c795ae"
+
+url:
+  base: "italic #ae95c7"
+  protocol: "italic #ae95c7"
+
+syntax:
+  json_key: "italic #ae95c7"
+  json_string: "#95aec7"
+  json_number: "#95c7ae"
+  json_boolean: "#c7ae95"
+  json_null: "#c7ccd1"
