@@ -90,7 +90,6 @@ in
   # itself, colliding with our symlink. With settings unset the module leaves
   # that path free, and the `configs` map symlinks our hand-tuned toml there.
   programs.starship.enable = true;
-  programs.bash-completion.enable = true;
   # programs.fzf.enable = true;
   # programs.zoxide.enable = true;
   # programs.atuin.enable = true;
