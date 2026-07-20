@@ -28,7 +28,9 @@ let
     posting = "posting";
     niri = "niri";
     waybar = "waybar";
-    starship = "starship";
+    # starship reads ~/.config/starship.toml (a bare FILE, not a dir), so key
+    # this by the filename — the map then symlinks that exact path.
+    "starship.toml" = "starship/starship.toml";
   };
 in
 {
@@ -72,6 +74,7 @@ in
       vi = "nvim";
       vim = "nvim";
       nrs = "sudo nixos-rebuild switch --flake ~/nixos_dotfiles#nixos-laptop";
+      checkhome = "nix-instantiate --parse /home/sam/nixos_dotfiles/home.nix";
       alre = "touch ~/.config/alacritty/alacritty.toml";
       fbg = "cd ~/Development/work/fbg-cloud-server";
       initrs = "cp -rT ~/nixos_dotfiles/templates/rust . && direnv allow";
@@ -85,15 +88,12 @@ in
   };
 
   # More bash stuff.
-  # enable = true just wires `starship init bash` into bashrc. We do NOT set
-  # `settings` (which would make home-manager generate ~/.config/starship.toml
-  # from Nix and shadow the hand-tuned file). Instead the native toml is
-  # symlinked via the `configs` map like every other tool. But starship's
-  # default config path is ~/.config/starship.toml (a bare file), not
-  # ~/.config/starship/ (a dir), so it never sees the symlinked directory —
-  # STARSHIP_CONFIG points it at the file inside that dir.
+  # enable = true wires `starship init bash` into bashrc AND sets
+  # STARSHIP_CONFIG=~/.config/starship.toml. We deliberately DON'T set
+  # `settings`: that would make the module generate ~/.config/starship.toml
+  # itself, colliding with our symlink. With settings unset the module leaves
+  # that path free, and the `configs` map symlinks our hand-tuned toml there.
   programs.starship.enable = true;
-  home.sessionVariables.STARSHIP_CONFIG = "${config.xdg.configHome}/starship/starship.toml";
   # programs.fzf.enable = true;
   # programs.zoxide.enable = true;
   # programs.atuin.enable = true;
