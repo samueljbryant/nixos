@@ -1,5 +1,5 @@
 [general]
-import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/gruvbox_material.toml"]
+import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/vscode.toml"]
 
 [font]
 size = 11.0
