@@ -81,9 +81,7 @@ in
       initzig = "cp -rT ~/nixos_dotfiles/templates/zig . && direnv allow";
       initsc = "cp -rT ~/nixos_dotfiles/templates/supercollider . && direnv allow";
     };
-    completion = {
-      package = pkgs.bash-completion;
-    };
+    enableCompletion = true;
   };
 
   # More bash stuff.
@@ -123,9 +121,6 @@ in
     wl-clipboard
     waybar
     swaybg
-
-    # bash
-    bash-completion
 
     # audio
     # Wrap SuperCollider's entry-point binaries so they launch under pw-jack
