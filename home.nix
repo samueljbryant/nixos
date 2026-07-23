@@ -203,7 +203,4 @@ in
   # out-of-store symlink trick: drop new *.yaml theme files in the source dir
   # and posting hot-reloads them; no rebuild needed.
   xdg.dataFile."posting/themes".source = create_symlink "${dotfiles}/posting-themes";
-
-  # Posting stores requests here.
-  xdg.dataFile."posting/default".source = create_symlink "${dotfiles}/posting-requests";
 }
