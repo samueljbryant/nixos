@@ -21,8 +21,8 @@ url:
   protocol: "italic #ae95c7"
 
 syntax:
-  json_key: "italic #ae95c7"
-  json_string: "#95aec7"
+  json_key: " #ae95c7"
+  json_string: "italic #95aec7"
   json_number: "#95c7ae"
-  json_boolean: "#c7ae95"
-  json_null: "#c7ccd1"
+  json_boolean: "italic #c7ae95"
+  json_null: "italic #c7ccd1"
