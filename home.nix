@@ -166,6 +166,8 @@ in
     };
   };
 
+  services.keyd.enable = true;
+
   # Lock screen apearance (invoked by swayidle)
   programs.swaylock = {
     enable = true;

@@ -98,6 +98,8 @@
     ];
   };
 
+  users.groups.keyd = { };
+
   programs.firefox.enable = true;
   programs.niri.enable = true;
   programs.sway.enable = true;
