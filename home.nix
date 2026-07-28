@@ -145,6 +145,7 @@ in
 
     # Keyboard layers
     keyd
+    warpd
 
   ];
 
