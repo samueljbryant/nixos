@@ -65,6 +65,11 @@
     drivers = [ pkgs.brlaser ]; # Brother printers
   };
 
+  # Let VIA (WebHID) open the WOBKEY Rainy 75 keyboard
+  services.udev.extraRules = ''
+    KERNEL=="hidraw*", ATTRS{idVendor}=="320f", ATTRS{idProduct}=="5055", MODE="0660", TAG+="uaccess"
+  '';
+
   services.avahi = {
     enable = true;
     nssmdns4 = true;
