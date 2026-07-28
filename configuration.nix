@@ -67,7 +67,7 @@
 
   # Let VIA (WebHID) open the WOBKEY Rainy 75 keyboard
   services.udev.extraRules = ''
-    KERNEL=="hidraw*", ATTRS{idVendor}=="320f", ATTRS{idProduct}=="5055", MODE="0660", TAG+="uaccess"
+    KERNEL=="hidraw*", ATTRS{idVendor}=="320f", ATTRS{idProduct}=="5055", MODE="0660", GROUP="users"
   '';
 
   services.avahi = {
