@@ -80,6 +80,7 @@ in
       initpy = "cp -rT ~/nixos_dotfiles/templates/python . && direnv allow";
       initzig = "cp -rT ~/nixos_dotfiles/templates/zig . && direnv allow";
       initsc = "cp -rT ~/nixos_dotfiles/templates/supercollider . && direnv allow";
+      initts = "cp -rT ~/nixos_dotfiles/templates/typescript/ . && direnv allow";
     };
     enableCompletion = true;
   };
