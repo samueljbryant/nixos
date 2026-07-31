@@ -145,8 +145,10 @@ in
     })
 
     # Keyboard layers
-    keyd
-    warpd
+    kanata
+
+    # website
+    flyctl
 
   ];
 
