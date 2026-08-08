@@ -3,7 +3,7 @@
 
 // Startup
 spawn-at-startup "waybar"
-spawn-at-startup "kanata" // Workman remap; auto-finds ~/.config/kanata/kanata.kbd
+// spawn-at-startup "kanata" // Colemak-DH remap; auto-finds ~/.config/kanata/kanata.kbd
 spawn-sh-at-startup "swaybg -m fill -i ~/nixos_dotfiles/config/niri/backgrounds/totoro_clear.jpg"
 
 input {

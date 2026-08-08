@@ -1,13 +1,14 @@
-;; Workman layout, remapped from a physical QWERTY keyboard.
+;; Colemak-DH (mod-DH) layout, remapped from a physical QWERTY keyboard.
 ;;
 ;; defsrc lists the physical keys (in QWERTY positions) that kanata intercepts.
 ;; deflayer lists what each of those positions produces. Any physical key NOT
 ;; in defsrc passes through untouched (modifiers, numbers, space, etc.).
 ;;
-;; Workman reference:
-;;   Q D R W B   J F U P ;
-;;   A S H T G   Y N E O I
-;;   Z X M C V   K L , . /
+;; Colemak-DH reference (D and H moved to the inner bottom-row positions to
+;; cut the index-finger inward reach that plain Colemak suffers from):
+;;   Q W F P B   J L U Y ;
+;;   A R S T G   M N E I O
+;;   Z X C D V   K H , . /
 
 ;; process-unmapped-keys no => keys absent from defsrc are left completely
 ;; untouched by kanata (fastest, and all we need for a plain layout swap).
@@ -21,8 +22,8 @@
   z    x    c    v    b    n    m    ,    .    /
 )
 
-(deflayer workman
-  q    d    r    w    b    j    f    u    p    ;
-  a    s    h    t    g    y    n    e    o    i
-  z    x    m    c    v    k    l    ,    .    /
+(deflayer colemak-dh
+  q    w    f    p    b    j    l    u    y    ;
+  a    r    s    t    g    m    n    e    i    o
+  z    x    c    d    v    k    h    ,    .    /
 )
