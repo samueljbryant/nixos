@@ -35,6 +35,12 @@
   time.timeZone = "America/New_York";
   hardware.bluetooth.enable = true;
 
+  # Lets a non-root process (kanata, spawned by niri) create a virtual keyboard.
+  # Loads the uinput module, creates the `uinput` group, and adds a udev rule
+  # making /dev/uinput group-writable. The `sam` user is added to `uinput`
+  # (write the virtual device) and `input` (read the physical keyboards) below.
+  hardware.uinput.enable = true;
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -97,6 +103,8 @@
     extraGroups = [
       "wheel"
       "networkmanager"
+      "input" # read /dev/input/event* (physical keyboards) for kanata
+      "uinput" # write /dev/uinput (kanata's virtual keyboard)
     ]; # Enable ‘sudo’ for the user.
     packages = with pkgs; [
       tree

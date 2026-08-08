@@ -1,0 +1,28 @@
+;; Workman layout, remapped from a physical QWERTY keyboard.
+;;
+;; defsrc lists the physical keys (in QWERTY positions) that kanata intercepts.
+;; deflayer lists what each of those positions produces. Any physical key NOT
+;; in defsrc passes through untouched (modifiers, numbers, space, etc.).
+;;
+;; Workman reference:
+;;   Q D R W B   J F U P ;
+;;   A S H T G   Y N E O I
+;;   Z X M C V   K L , . /
+
+;; process-unmapped-keys no => keys absent from defsrc are left completely
+;; untouched by kanata (fastest, and all we need for a plain layout swap).
+(defcfg
+  process-unmapped-keys no
+)
+
+(defsrc
+  q    w    e    r    t    y    u    i    o    p
+  a    s    d    f    g    h    j    k    l    ;
+  z    x    c    v    b    n    m    ,    .    /
+)
+
+(deflayer workman
+  q    d    r    w    b    j    f    u    p    ;
+  a    s    h    t    g    y    n    e    o    i
+  z    x    m    c    v    k    l    ,    .    /
+)

@@ -1,7 +1,7 @@
 require("nvchad.configs.lspconfig").defaults()
 
 local servers = { "basedpyright", "cssls", "ruff", "lua_ls", "ty", "clangd", "rust_analyzer", "bashls", "gopls",
-  "texlab", "neocmake", "ts_ls", "eslint", "ctags_ls", "sc_lsp", "nil_ls",
+  "texlab", "neocmake", "ts_ls", "eslint", "ctags_ls", "sc_lsp", "nil_ls", "zls",
 }
 local lspconfig = vim.lsp.config
 local luarocks_lib = {}
