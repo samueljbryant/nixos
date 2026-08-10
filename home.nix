@@ -154,6 +154,10 @@ in
     # website
     flyctl
 
+    # Games
+    openmw
+    steam
+
   ];
 
   # Notifications
