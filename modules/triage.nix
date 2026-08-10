@@ -32,27 +32,31 @@ let
     '';
   };
 
-  # One timer run: single-flight lock, then headless claude on one skill.
-  # TRIAGE_SERVER_MANAGED=1 makes the skill's server_up/down leave the persistent
-  # server alone. gh + claude-code are on PATH here (systemd user PATH is minimal,
-  # so we can't rely on the global home.packages ones).
+  # One timer run: single-flight lock, a cheap no-LLM work check, then headless
+  # claude on one skill only if there's actually work. TRIAGE_SERVER_MANAGED=1
+  # makes the skill's server_up/down leave the persistent server alone. gh +
+  # claude-code + curl are on PATH here (systemd user PATH is minimal, so we
+  # can't rely on the global home.packages ones); SSL_CERT_FILE + curl let the
+  # scripts publish ntfy alerts (the topic auth token lives in the repo .env as
+  # NTFY_API). The gate (has_work.sh) fails CLOSED: on its own error it alerts
+  # once and skips the run, so a broken environment can't loop failing agents.
   triageRun = pkgs.writeShellApplication {
     name = "fbg-triage-run";
-    runtimeInputs = [ pkgs.nix pkgs.git pkgs.gh pkgs.claude-code pkgs.util-linux pkgs.coreutils ];
+    runtimeInputs = [ pkgs.nix pkgs.git pkgs.gh pkgs.claude-code pkgs.util-linux pkgs.coreutils pkgs.curl pkgs.cacert ];
     text = ''
-      cmd="''${1:?usage: fbg-triage-run <skill-prompt>}"
+      stage="''${1:?usage: fbg-triage-run <stage> <skill-prompt>}"
+      cmd="''${2:?usage: fbg-triage-run <stage> <skill-prompt>}"
       lockdir="''${XDG_RUNTIME_DIR:-/tmp}/fbg-triage"; mkdir -p "$lockdir"
-      lock="$lockdir/$(printf '%s' "$cmd" | tr -c 'a-zA-Z0-9' _).lock"
+      lock="$lockdir/$stage.lock"
       exec 9>"$lock"
-      flock -n 9 || { echo "skip: previous [$cmd] run still going"; exit 0; }
+      flock -n 9 || { echo "skip: previous [$stage] run still going"; exit 0; }
       export TRIAGE_SERVER_MANAGED=1
+      export SSL_CERT_FILE="${pkgs.cacert}/etc/ssl/certs/ca-bundle.crt"
       cd "${repo}"
+      # run_stage.sh gates, runs the agent, and alerts on crash — inside the dev
+      # shell so its intake gate has uv/gh and curl+certs reach ntfy.
       exec nix develop "path:${repo}" --command \
-        claude -p "$cmd" \
-          --dangerously-skip-permissions \
-          --model opus \
-          --max-turns 60 \
-          --output-format json
+        bash "${repo}/.claude/skills/triage/scripts/run_stage.sh" "$stage" "$cmd"
     '';
   };
 
@@ -68,7 +72,7 @@ let
         Type = "oneshot";
         WorkingDirectory = repo;
         EnvironmentFile = keyFile;
-        ExecStart = "${triageRun}/bin/fbg-triage-run ${prompt}";
+        ExecStart = "${triageRun}/bin/fbg-triage-run ${name} ${prompt}";
         TimeoutStartSec = "1800";
       };
     };
