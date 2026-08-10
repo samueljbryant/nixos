@@ -106,6 +106,7 @@ in
   };
 
   home.packages = with pkgs; [
+    cron
     ripgrep
     gcc
     bat
