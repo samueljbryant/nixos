@@ -1,9 +1,12 @@
 # Autonomous FBG triage pipeline — user systemd services + timers.
 #
-# A persistent dev server stays warm; three staggered timers fire headless
-# `claude` on the triage skills:
-#   intake  (:03,:33)  ->  fixer (:08,:23,:38,:53)  ->  reviewer (:15,:45)
-# so each stage catches the previous stage's fresh output within a cycle.
+# A persistent dev server stays warm; staggered timers fire headless `claude` on
+# the triage skills:
+#   intake (:03,:33) -> fixer (:08,:23,:38,:53) -> reviewer (:15,:45)
+#   publish (12am,5pm) — batches reviewed-and-passed fixes into one PR
+# so each stage catches the previous stage's fresh output within a cycle. Every
+# run is gated by has_work.sh: if there's nothing to do, claude is NOT invoked
+# (no wasted tokens), and a gate/agent failure alerts via ntfy instead of looping.
 #
 # One-time host setup (the API key must NOT live in the world-readable nix store):
 #   mkdir -p ~/.config/fbg-triage
@@ -90,6 +93,8 @@ let
   intake = job "intake" "/triage-intake" "*:03,33";
   fixer = job "fixer" "/triage" "*:08,23,38,53";
   reviewer = job "reviewer" "/triage-review" "*:15,45";
+  # publish (stage "publish" -> unit triage-publish) batches passed fixes at 12am/5pm.
+  publisher = job "publish" "/triage-publish" "*-*-* 00,17:00:00";
 in
 {
   systemd.user.services =
@@ -111,7 +116,8 @@ in
     }
     // intake.services
     // fixer.services
-    // reviewer.services;
+    // reviewer.services
+    // publisher.services;
 
-  systemd.user.timers = intake.timers // fixer.timers // reviewer.timers;
+  systemd.user.timers = intake.timers // fixer.timers // reviewer.timers // publisher.timers;
 }
