@@ -38,6 +38,7 @@ in
   imports = [
     ./modules/neovim.nix
     ./modules/claude_code.nix
+    ./modules/triage.nix
   ];
   home.username = "sam";
   home.homeDirectory = "/home/sam";
