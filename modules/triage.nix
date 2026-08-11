@@ -27,7 +27,10 @@ let
   # for uv + the pinned interpreter + wheel LD_LIBRARY_PATH.
   fbgServer = pkgs.writeShellApplication {
     name = "fbg-server";
-    runtimeInputs = [ pkgs.nix pkgs.git ];
+    runtimeInputs = [
+      pkgs.nix
+      pkgs.git
+    ];
     text = ''
       cd "${repo}"
       exec nix develop "path:${repo}" --command \
@@ -45,7 +48,16 @@ let
   # once and skips the run, so a broken environment can't loop failing agents.
   triageRun = pkgs.writeShellApplication {
     name = "fbg-triage-run";
-    runtimeInputs = [ pkgs.nix pkgs.git pkgs.gh pkgs.claude-code pkgs.util-linux pkgs.coreutils pkgs.curl pkgs.cacert ];
+    runtimeInputs = [
+      pkgs.nix
+      pkgs.git
+      pkgs.gh
+      pkgs.claude-code
+      pkgs.util-linux
+      pkgs.coreutils
+      pkgs.curl
+      pkgs.cacert
+    ];
     text = ''
       stage="''${1:?usage: fbg-triage-run <stage> <skill-prompt>}"
       cmd="''${2:?usage: fbg-triage-run <stage> <skill-prompt>}"
@@ -68,7 +80,10 @@ let
     services."triage-${name}" = {
       Unit = {
         Description = "Triage ${name}";
-        After = [ "fbg-server.service" "network-online.target" ];
+        After = [
+          "fbg-server.service"
+          "network-online.target"
+        ];
         Wants = [ "fbg-server.service" ];
       };
       Service = {
@@ -94,30 +109,29 @@ let
   fixer = job "fixer" "/triage" "*:08,23,38,53";
   reviewer = job "reviewer" "/triage-review" "*:15,45";
   # publish (stage "publish" -> unit triage-publish) batches passed fixes at 12am/5pm.
-  publisher = job "publish" "/triage-publish" "*-*-* 00,17:00:00";
+  publisher = job "publish" "/triage-publish" "*-*-* 00,12:00:00,17:00:00";
 in
 {
-  systemd.user.services =
-    {
-      fbg-server = {
-        Unit = {
-          Description = "FBG cloud dev server (triage pipeline)";
-          After = [ "network-online.target" ];
-          Wants = [ "network-online.target" ];
-        };
-        Service = {
-          ExecStart = "${fbgServer}/bin/fbg-server";
-          WorkingDirectory = repo;
-          Restart = "always";
-          RestartSec = 5;
-        };
-        Install.WantedBy = [ "default.target" ];
+  systemd.user.services = {
+    fbg-server = {
+      Unit = {
+        Description = "FBG cloud dev server (triage pipeline)";
+        After = [ "network-online.target" ];
+        Wants = [ "network-online.target" ];
       };
-    }
-    // intake.services
-    // fixer.services
-    // reviewer.services
-    // publisher.services;
+      Service = {
+        ExecStart = "${fbgServer}/bin/fbg-server";
+        WorkingDirectory = repo;
+        Restart = "always";
+        RestartSec = 5;
+      };
+      Install.WantedBy = [ "default.target" ];
+    };
+  }
+  // intake.services
+  // fixer.services
+  // reviewer.services
+  // publisher.services;
 
   systemd.user.timers = intake.timers // fixer.timers // reviewer.timers // publisher.timers;
 }
