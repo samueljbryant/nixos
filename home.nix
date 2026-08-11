@@ -83,6 +83,7 @@ in
       initzig = "cp -rT ~/nixos_dotfiles/templates/zig . && direnv allow";
       initsc = "cp -rT ~/nixos_dotfiles/templates/supercollider . && direnv allow";
       initts = "cp -rT ~/nixos_dotfiles/templates/typescript/ . && direnv allow";
+      fbgjobstatus = "systemctl --user list-timers 'triage-*' --all --no-pager 2>&1";
     };
     enableCompletion = true;
   };
