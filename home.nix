@@ -107,7 +107,7 @@ in
   };
 
   home.packages = with pkgs; [
-    ntfy
+    ntfy-sh
     cron
     ripgrep
     gcc
