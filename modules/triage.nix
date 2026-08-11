@@ -109,7 +109,7 @@ let
   fixer = job "fixer" "/triage" "*:08,23,38,53";
   reviewer = job "reviewer" "/triage-review" "*:15,45";
   # publish (stage "publish" -> unit triage-publish) batches passed fixes at 12am/5pm.
-  publisher = job "publish" "/triage-publish" "*-*-* 00,12:00:00,17:00:00";
+  publisher = job "publish" "/triage-publish" "*-*-* 00,17:00:00";
 in
 {
   systemd.user.services = {
