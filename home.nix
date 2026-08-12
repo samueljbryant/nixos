@@ -108,8 +108,6 @@ in
     nix-direnv.enable = true;
   };
 
-  programs.steam.enable = true;
-
   home.packages = with pkgs; [
     ntfy-sh
     cron
@@ -160,6 +158,8 @@ in
 
     # Games
     openmw
+
+    steam
 
   ];
 
