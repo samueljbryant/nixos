@@ -41,6 +41,12 @@
   # (write the virtual device) and `input` (read the physical keyboards) below.
   hardware.uinput.enable = true;
 
+  # Gamer stuff
+  hardware.graphics = {
+    enable = true;
+    enable32Bit = true;
+  };
+
   # Configure network proxy if necessary
   # networking.proxy.default = "http://user:password@proxy:port/";
   # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
@@ -160,7 +166,6 @@
     git
     less
     pipewire.jack # provides `pw-jack`, the wrapper that lets JACK apps (e.g. SuperCollider) find PipeWire's libjack
-    vulkan-radeon
   ];
 
   nix.settings.experimental-features = [
