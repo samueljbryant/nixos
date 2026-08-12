@@ -24,7 +24,6 @@
           packages = [
             pkgs.go
             pkgs.gopls
-            pkgs.goimports
           ];
 
         };
