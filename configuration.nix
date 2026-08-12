@@ -160,6 +160,7 @@
     git
     less
     pipewire.jack # provides `pw-jack`, the wrapper that lets JACK apps (e.g. SuperCollider) find PipeWire's libjack
+    vulkan-radeon
   ];
 
   nix.settings.experimental-features = [
