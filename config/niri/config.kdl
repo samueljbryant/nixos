@@ -24,7 +24,7 @@ input {
     }
 
     // Focus follows the mouse across windows/columns.
-    focus-follows-mouse
+    // focus-follows-mouse
 }
 
 // --- Monitors (ported from your autorandr profiles) ---

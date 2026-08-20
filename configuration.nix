@@ -102,16 +102,18 @@
 
   # Enable touchpad support (enabled default in most desktopManager).
   # services.libinput.enable = true;
+  virtualisation.docker.enable = true;
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.sam = {
     isNormalUser = true;
     extraGroups = [
-      "wheel"
+      "wheel" # Enable ‘sudo’ for the user.
       "networkmanager"
       "input" # read /dev/input/event* (physical keyboards) for kanata
       "uinput" # write /dev/uinput (kanata's virtual keyboard)
-    ]; # Enable ‘sudo’ for the user.
+      "docker"
+    ];
     packages = with pkgs; [
       tree
     ];
