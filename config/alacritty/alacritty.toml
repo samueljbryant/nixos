@@ -1,5 +1,5 @@
 [general]
-import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/ashes_dark.toml"]
+import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/tomorrow_night.toml"]
 
 [font]
 size = 11.0
