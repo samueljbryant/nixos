@@ -29,7 +29,7 @@
         };
 
         # zig = pkgs.zigpkgs.default;
-        zig = pkgs.zigpkgs.master;
+        zig = pkgs.zigpkgs;
       in
       {
         devShells.default = pkgs.mkShell {
