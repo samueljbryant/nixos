@@ -6,9 +6,6 @@
     zig-overlay.url = "github:mitchellh/zig-overlay";
     zig-overlay.inputs.nixpkgs.follows = "nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
-    zls.url = "github:zigtools/zls";
-    zls.inputs.nixpkgs.follows = "nixpkgs";
-    zls.inputs.zig-overlay.follows = "zig-overlay";
   };
 
   outputs =
@@ -17,7 +14,6 @@
       nixpkgs,
       zig-overlay,
       flake-utils,
-      zls,
       ...
     }:
     flake-utils.lib.eachDefaultSystem (
@@ -28,16 +24,16 @@
           overlays = [ zig-overlay.overlays.default ];
         };
 
-        # zig = pkgs.zigpkgs.default;
-        zig = pkgs.zigpkgs;
+        zig = pkgs.zigpkgs.default;
       in
       {
         devShells.default = pkgs.mkShell {
           packages = [
             zig
-            zls
+            pkgs.zls
           ];
         };
       }
+
     );
 }
