@@ -1,6 +1,8 @@
 {
   config,
   pkgs,
+  lib,
+  inputs,
   ...
 }:
 
@@ -33,9 +35,36 @@ let
     # this by the filename — the map then symlinks that exact path.
     "starship.toml" = "starship/starship.toml";
   };
+
+  # Keys rendered into the fbg-cloud-server .env (everything except the
+  # triage-only ANTHROPIC_API_KEY). Order mirrors the original .env. Add/remove
+  # here in lockstep with `sops secrets/fbg.env`.
+  fbgAppKeys = [
+    "FBG_API_KEY"
+    "NTFY_API"
+    "REDIS_HOST"
+    "REDIS_PORT"
+    "RT_SPORTS_API_KEY"
+    "SHGN_API_KEY"
+    "SLEEPER_LOGIN"
+    "MFL_LOGIN"
+    "MFL_PASSWORD"
+    "RTSPORTS_LOGIN"
+    "RTSPORTS_PASSWORD"
+    "NFC_CUST_ID"
+    "FLEA_LOGIN"
+    "FLEA_PASSWORD"
+    "FFPC_LOGIN"
+    "FFPC_PASSWORD"
+    "FTX_SECRET"
+    "DF_SECRET"
+    "ESPN_COOKIES"
+    "CBS_COOKIES"
+  ];
 in
 {
   imports = [
+    inputs.sops-nix.homeManagerModules.sops
     ./modules/neovim.nix
     ./modules/claude_code.nix
     ./modules/triage.nix
@@ -109,6 +138,11 @@ in
   };
 
   home.packages = with pkgs; [
+    # secrets management (edit with: sops secrets/fbg.env)
+    sops
+    age
+    ssh-to-age
+
     ntfy-sh
     cron
     ripgrep
@@ -224,4 +258,35 @@ in
   # out-of-store symlink trick: drop new *.yaml theme files in the source dir
   # and posting hot-reloads them; no rebuild needed.
   xdg.dataFile."posting/themes".source = create_symlink "${dotfiles}/posting-themes";
+
+  # ── Secrets (sops-nix) ──────────────────────────────────────────────────────
+  # Everything lives encrypted in ./secrets/fbg.env, decrypted at activation with
+  # the age key at ~/.config/sops/age/keys.txt (dedicated keypair; recipient in
+  # .sops.yaml). No plaintext hits disk: rendered templates are symlinks into
+  # tmpfs ($XDG_RUNTIME_DIR/secrets). Edit with `sops secrets/fbg.env`; when
+  # adding/removing keys, update fbgAppKeys above and re-run `nrs`.
+  sops = {
+    age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
+    defaultSopsFile = ./secrets/fbg.env;
+    defaultSopsFormat = "dotenv";
+
+    secrets = lib.genAttrs (fbgAppKeys ++ [ "ANTHROPIC_API_KEY" ]) (_: { });
+
+    # ANTHROPIC_API_KEY for the triage systemd services (EnvironmentFile points
+    # at this rendered path — see modules/triage.nix).
+    templates."fbg-triage-env".content = ''
+      ANTHROPIC_API_KEY=${config.sops.placeholder."ANTHROPIC_API_KEY"}
+    '';
+
+    # The fbg app (pydantic env_file=".env") and triage scripts read .env from
+    # the repo cwd. Render it as a symlink in the working tree; the plaintext
+    # stays in tmpfs. It's git-ignored, so git ops can't lose it and `nrs`
+    # always restores the link.
+    templates."fbg-app-env" = {
+      path = "/home/sam/Development/work/fbg-cloud-server/.env";
+      content = lib.concatMapStringsSep "\n" (
+        k: "${k}=${config.sops.placeholder.${k}}"
+      ) fbgAppKeys;
+    };
+  };
 }

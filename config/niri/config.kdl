@@ -4,7 +4,7 @@
 // Startup
 spawn-at-startup "waybar"
 // spawn-at-startup "kanata" // Colemak-DH remap; auto-finds ~/.config/kanata/kanata.kbd
-spawn-sh-at-startup "swaybg -m fill -i ~/nixos_dotfiles/config/niri/backgrounds/totoro_clear.jpg"
+spawn-sh-at-startup "swaybg -m fill -i ~/nixos_dotfiles/config/niri/backgrounds/water.jpg"
 
 input {
     keyboard {
@@ -191,7 +191,7 @@ binds {
 
 window-rule {
   match app-id="Alacritty"
-  opacity 0.97
+  opacity 0.85
 }
 
 

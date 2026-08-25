@@ -6,14 +6,14 @@
 local M = {}
 
 M.base46 = {
-  theme = "tomorrow_night",
+  theme = "vscode_dark",
 
   hl_override = {
-    -- Comment = { italic = true },
-    -- ["@comment"] = { italic = true },
+    Comment = { italic = true },
+    ["@comment"] = { italic = true },
     -- String = { italic = true },
-    ["@keyword"] = { italic = true },
-    Keyword = { italic = true },
+    -- ["@keyword"] = { italic = true },
+    -- Keyword = { italic = true },
   },
 }
 

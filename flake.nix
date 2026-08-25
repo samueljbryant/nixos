@@ -6,6 +6,10 @@
       url = "github:nix-community/home-manager/release-26.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    sops-nix = {
+      url = "github:Mic92/sops-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
     # noctalia = {
     #   url = "github:noctalia-dev/noctalia-shell";
     #   inputs.nixpkgs.follows = "nixpkgs";
@@ -13,7 +17,7 @@
   };
 
   outputs =
-    {
+    inputs@{
       self,
       nixpkgs,
       home-manager,
@@ -28,7 +32,7 @@
           {
             home-manager = {
               useGlobalPkgs = true;
-              # extraSpecialArgs = { inherit inputs; }; to enable:  outputs = inputs@{...
+              extraSpecialArgs = { inherit inputs; };
               useUserPackages = true;
               users.sam = import ./home.nix;
               backupFileExtension = "backup";

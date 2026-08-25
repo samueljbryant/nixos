@@ -17,10 +17,11 @@
 # Apply:  nrs
 # Watch:  journalctl --user -u triage-fixer -f
 # Pause:  systemctl --user stop triage-fixer.timer   (or disable in this module)
-{ pkgs, ... }:
+{ config, pkgs, ... }:
 let
   repo = "/home/sam/Development/work/fbg-cloud-server";
-  keyFile = "%h/.config/fbg-triage/env"; # ANTHROPIC_API_KEY=... (mode 600)
+  # ANTHROPIC_API_KEY, rendered by sops-nix from ./secrets/fbg.env (see home.nix).
+  keyFile = config.sops.templates."fbg-triage-env".path;
 
   # Persistent server — kept warm so timer runs don't start/stop it (which would
   # race when fixer and reviewer overlap). Runs inside the repo's flake dev shell
@@ -81,10 +82,14 @@ let
       Unit = {
         Description = "Triage ${name}";
         After = [
+          "sops-nix.service"
           "fbg-server.service"
           "network-online.target"
         ];
-        Wants = [ "fbg-server.service" ];
+        Wants = [
+          "sops-nix.service"
+          "fbg-server.service"
+        ];
       };
       Service = {
         Type = "oneshot";
@@ -116,8 +121,15 @@ in
     fbg-server = {
       Unit = {
         Description = "FBG cloud dev server (triage pipeline)";
-        After = [ "network-online.target" ];
-        Wants = [ "network-online.target" ];
+        # Needs the sops-rendered .env symlink present before the app loads it.
+        After = [
+          "sops-nix.service"
+          "network-online.target"
+        ];
+        Wants = [
+          "sops-nix.service"
+          "network-online.target"
+        ];
       };
       Service = {
         ExecStart = "${fbgServer}/bin/fbg-server";
