@@ -260,15 +260,17 @@ in
   xdg.dataFile."posting/themes".source = create_symlink "${dotfiles}/posting-themes";
 
   # ── Secrets (sops-nix) ──────────────────────────────────────────────────────
-  # Everything lives encrypted in ./secrets/fbg.env, decrypted at activation with
+  # Everything lives encrypted in ./secrets/fbg.yaml, decrypted at activation with
   # the age key at ~/.config/sops/age/keys.txt (dedicated keypair; recipient in
   # .sops.yaml). No plaintext hits disk: rendered templates are symlinks into
-  # tmpfs ($XDG_RUNTIME_DIR/secrets). Edit with `sops secrets/fbg.env`; when
+  # tmpfs ($XDG_RUNTIME_DIR/secrets). Edit with `sops secrets/fbg.yaml`; when
   # adding/removing keys, update fbgAppKeys above and re-run `nrs`.
+  # NB: YAML (not dotenv) — this sops-nix's installer only extracts per-key from
+  # yaml/json; dotenv secrets each resolve to the whole file.
   sops = {
     age.keyFile = "${config.home.homeDirectory}/.config/sops/age/keys.txt";
-    defaultSopsFile = ./secrets/fbg.env;
-    defaultSopsFormat = "dotenv";
+    defaultSopsFile = ./secrets/fbg.yaml;
+    defaultSopsFormat = "yaml";
 
     secrets = lib.genAttrs (fbgAppKeys ++ [ "ANTHROPIC_API_KEY" ]) (_: { });
 

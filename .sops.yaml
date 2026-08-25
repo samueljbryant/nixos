@@ -2,11 +2,11 @@
 # NOT in git/store — BACK IT UP; losing it means losing every secret here).
 # Decryption runs as user sam via the home-manager sops module
 # (sops.age.keyFile in home.nix). To add another key: add its recipient here,
-# then `sops updatekeys secrets/*.env`.
+# then `sops updatekeys secrets/*.yaml`.
 keys:
   - &sam age1pgmfqxewvnd6x7jrph79h3fxg7khg2fzgmv2wfrz3ndmkqt05prqxv7435
 creation_rules:
-  - path_regex: secrets/[^/]+\.env$
+  - path_regex: secrets/[^/]+\.ya?ml$
     key_groups:
       - age:
           - *sam
