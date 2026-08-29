@@ -182,7 +182,7 @@
     nerd-fonts.symbols-only
     nerd-fonts.gohufont
     nerd-fonts.victor-mono
-
+    nerd-fonts.inconsolata
   ];
 
   fonts.fontconfig.defaultFonts.monospace = [
