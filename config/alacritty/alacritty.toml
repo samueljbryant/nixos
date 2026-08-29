@@ -6,6 +6,7 @@ size = 11.0
 
 [font.normal]
 family = "0xProto Nerd Font Mono"
+# family = "Incosolata Nerd Font Mono"
 style = "Regular"
 
 [[keyboard.bindings]]

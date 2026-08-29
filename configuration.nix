@@ -186,7 +186,7 @@
   ];
 
   fonts.fontconfig.defaultFonts.monospace = [
-    "Inconsolate Nerd Font"
+    "Inconsolate Nerd Font Mono"
     "0xProto Nerd Font Mono"
     "Symbols Nerd Font Mono"
     "GohuFont Nerd Font Mono"
