@@ -1,12 +1,13 @@
 [general]
-import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/rose_pine_dawn.toml"]
+# import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/dark_plus.toml"]
+# import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/rose_pine_dawn.toml"]
+import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/gruvbox_material.toml"]
 
 [font]
-size = 11.0
+size = 12.0
 
 [font.normal]
-family = "0xProto Nerd Font Mono"
-# family = "Incosolata Nerd Font Mono"
+family = "Inconsolata Nerd Font Mono"
 style = "Regular"
 
 [[keyboard.bindings]]

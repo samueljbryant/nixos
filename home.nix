@@ -36,9 +36,8 @@ let
     "starship.toml" = "starship/starship.toml";
   };
 
-  # Keys rendered into the fbg-cloud-server .env (everything except the
-  # triage-only ANTHROPIC_API_KEY). Order mirrors the original .env. Add/remove
-  # here in lockstep with `sops secrets/fbg.env`.
+  # Keys rendered into the fbg-cloud-server .env. Order mirrors the original
+  # .env. Add/remove here in lockstep with `sops secrets/fbg.env`.
   fbgAppKeys = [
     "FBG_API_KEY"
     "NTFY_API"
@@ -67,7 +66,6 @@ in
     inputs.sops-nix.homeManagerModules.sops
     ./modules/neovim.nix
     ./modules/claude_code.nix
-    ./modules/triage.nix
   ];
   home.username = "sam";
   home.homeDirectory = "/home/sam";
@@ -113,7 +111,7 @@ in
       initsc = "cp -rT ~/nixos_dotfiles/templates/supercollider . && direnv allow";
       initts = "cp -rT ~/nixos_dotfiles/templates/typescript/ . && direnv allow";
       initgo = "cp -rT ~/nixos_dotfiles/templates/go/ . && direnv allow";
-      fbgjobstatus = "systemctl --user list-timers 'triage-*' --all --no-pager 2>&1";
+      initdotnet = "cp -rT ~/nixos_dotfiles/templates/dotnet/ . && direnv allow";
     };
     enableCompletion = true;
   };
@@ -272,13 +270,7 @@ in
     defaultSopsFile = ./secrets/fbg.yaml;
     defaultSopsFormat = "yaml";
 
-    secrets = lib.genAttrs (fbgAppKeys ++ [ "ANTHROPIC_API_KEY" ]) (_: { });
-
-    # ANTHROPIC_API_KEY for the triage systemd services (EnvironmentFile points
-    # at this rendered path — see modules/triage.nix).
-    templates."fbg-triage-env".content = ''
-      ANTHROPIC_API_KEY=${config.sops.placeholder."ANTHROPIC_API_KEY"}
-    '';
+    secrets = lib.genAttrs fbgAppKeys (_: { });
 
     # The fbg app (pydantic env_file=".env") and triage scripts read .env from
     # the repo cwd. Render it as a symlink in the working tree; the plaintext
@@ -286,9 +278,7 @@ in
     # always restores the link.
     templates."fbg-app-env" = {
       path = "/home/sam/Development/work/fbg-cloud-server/.env";
-      content = lib.concatMapStringsSep "\n" (
-        k: "${k}=${config.sops.placeholder.${k}}"
-      ) fbgAppKeys;
+      content = lib.concatMapStringsSep "\n" (k: "${k}=${config.sops.placeholder.${k}}") fbgAppKeys;
     };
   };
 }
