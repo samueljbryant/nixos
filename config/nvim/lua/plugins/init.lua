@@ -64,6 +64,14 @@ return {
   -- },
   { 'davidgranstrom/telescope-scdoc.nvim' },
   { 'kylechui/nvim-surround',             event = "VeryLazy" },
+  {
+    "GustavEikaas/easy-dotnet.nvim",
+    ft = { "cs", "fsharp", "sln", "csproj", "fsproj" },
+    dependencies = { "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap", },
+    config = function()
+      require("easy-dotnet").setup()
+    end
+  }
   -- {
   --   'saghen/blink.cmp',
   --   dependencies = { 'rafamadriz/friendly-snippets' },
