@@ -137,7 +137,7 @@ in
 
   home.packages = with pkgs; [
     # AWS
-    awscli
+    awscli2
 
     # secrets management (edit with: sops secrets/fbg.env)
     sops
