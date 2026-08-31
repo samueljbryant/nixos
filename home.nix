@@ -43,6 +43,7 @@ let
     "AWS_SECRET_ACCESS_KEY"
     "AWS_DEFAULT_REGION"
   ];
+
   fbgAppKeys = [
     "FBG_API_KEY"
     "NTFY_API"
@@ -278,7 +279,7 @@ in
     defaultSopsFile = ./secrets/fbg.yaml;
     defaultSopsFormat = "yaml";
 
-    secrets = lib.genAttrs (fbgAppKeys + awsKeys) (_: { });
+    secrets = lib.genAttrs (fbgAppKeys ++ awsKeys) (_: { });
 
     # The fbg app (pydantic env_file=".env") and triage scripts read .env from
     # the repo cwd. Render it as a symlink in the working tree; the plaintext
@@ -294,7 +295,7 @@ in
       content = ''
         [default]
         aws_access_key_id = ${config.sops.placeholder.AWS_ACCESS_KEY_ID}
-        aws_secret_key_id = ${config.sops.placeholder.AWS_SECRET_ACCESS_KEY}
+        aws_secret_access_key = ${config.sops.placeholder.AWS_SECRET_ACCESS_KEY}
         region = ${config.sops.placeholder.AWS_DEFAULT_REGION}
       '';
     };
