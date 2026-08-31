@@ -38,6 +38,11 @@ let
 
   # Keys rendered into the fbg-cloud-server .env. Order mirrors the original
   # .env. Add/remove here in lockstep with `sops secrets/fbg.env`.
+  awsKeys = [
+    "AWS_ACCESS_KEY_ID"
+    "AWS_SECRET_ACCESS_KEY"
+    "AWS_DEFAULT_REGION"
+  ];
   fbgAppKeys = [
     "FBG_API_KEY"
     "NTFY_API"
@@ -273,7 +278,7 @@ in
     defaultSopsFile = ./secrets/fbg.yaml;
     defaultSopsFormat = "yaml";
 
-    secrets = lib.genAttrs fbgAppKeys (_: { });
+    secrets = lib.genAttrs (fbgAppKeys + awsKeys) (_: { });
 
     # The fbg app (pydantic env_file=".env") and triage scripts read .env from
     # the repo cwd. Render it as a symlink in the working tree; the plaintext
@@ -283,5 +288,16 @@ in
       path = "/home/sam/Development/work/fbg-cloud-server/.env";
       content = lib.concatMapStringsSep "\n" (k: "${k}=${config.sops.placeholder.${k}}") fbgAppKeys;
     };
+
+    templates."aws-credentials" = {
+      path = "${config.home.homeDirectory}/.aws/credentials";
+      content = ''
+        [default]
+        aws_access_key_id = ${config.sops.placeholder.AWS_ACCESS_KEY_ID}
+        aws_secret_key_id = ${config.sops.placeholder.AWS_SECRET_ACCESS_KEY}
+        region = ${config.sops.placeholder.AWS_DEFAULT_REGION}
+      '';
+    };
+
   };
 }
