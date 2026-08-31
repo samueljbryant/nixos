@@ -136,6 +136,9 @@ in
   };
 
   home.packages = with pkgs; [
+    # AWS
+    awscli
+
     # secrets management (edit with: sops secrets/fbg.env)
     sops
     age
