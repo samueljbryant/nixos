@@ -1,5 +1,5 @@
 {
-  description = "DotNet development flake";
+  description = "C development environment";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-26.05";
@@ -17,19 +17,21 @@
       system:
       let
         pkgs = import nixpkgs { inherit system; };
-        dotnet = pkgs.dotnet-sdk;
       in
       {
         devShells.default = pkgs.mkShell {
-          packages = [
-            dotnet
+          packages = with pkgs; [
+            clang-tools
+            cmake
+            gcc
+            gdb
+            pkg-config
+            raylib
           ];
-
-          DOTNET_CLI_TELEMETRY_OPTOUT = 1;
-          DOTNET_NOLOGO = 1;
-          DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = 1;
+          env = {
+            CMAKE_EXPORT_COMPILE_COMMANDS = "1";
+          };
         };
-
       }
     );
 }

@@ -117,7 +117,7 @@ in
       initsc = "cp -rT ~/nixos_dotfiles/templates/supercollider . && direnv allow";
       initts = "cp -rT ~/nixos_dotfiles/templates/typescript/ . && direnv allow";
       initgo = "cp -rT ~/nixos_dotfiles/templates/go/ . && direnv allow";
-      initdotnet = "cp -rT ~/nixos_dotfiles/templates/dotnet/ . && direnv allow";
+      initc = "cp -rT ~/nixos_dotfiles/templates/c/ . && direnv allow";
       aws_yah_errors = "aws logs tail '/fbg/prod/cs/requests/yahoo' --since 1h 2>&1 | grep -v ' OK ' | bat";
     };
     enableCompletion = true;
