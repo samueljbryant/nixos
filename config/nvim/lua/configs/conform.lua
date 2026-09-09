@@ -12,13 +12,17 @@ local options = {
     rust = { "rustfmt", lsp_format = "fallback" },
     go = { "goimports", "gofmt" },
     cs = { "csharpier" },
+    ada = { "gnatformat" },
   },
 
-  -- formatters = {
-  --   ruff = {
-  --     args = {"format", "--line-length", "88", "stdin-filename", "$FILENAME", "-"}
-  --   }
-  -- },
+  formatters = {
+    -- Installed via alire (`alr install gnatformat`); see templates/ada.
+    gnatformat = {
+      command = "gnatformat",
+      args = { "$FILENAME" },
+      stdin = false,
+    },
+  },
 
   -- lspconfig("ruff", {})
 
