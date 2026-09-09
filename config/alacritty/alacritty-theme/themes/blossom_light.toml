@@ -1,0 +1,30 @@
+
+# Colors (blossom_light)
+
+# Default colors
+[colors.primary]
+background =  '#e6dfdc'
+foreground =  '#695d57'
+# foreground =  '#a9a29f'
+
+# Normal colors
+[colors.normal]
+black   = '#dfd8d5'
+red     = '#b28069'
+green   = '#6c805c'
+yellow  = '#a9a29f'
+blue    = '#5f7d9b'
+magenta = '#a685a6'
+cyan    = '#75998e'
+white   = '#695d57'
+
+# Bright colors
+[colors.bright]
+black   = '#d9d2cf'
+red     = '#b7856e'
+green   = '#899d79'
+yellow  = '#d38a73'
+blue    = '#5e5f65'
+magenta = '#9c7b9c'
+cyan    = '#75998e'
+white   = '#695d57'

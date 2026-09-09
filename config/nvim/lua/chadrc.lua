@@ -6,7 +6,7 @@
 local M = {}
 
 M.base46 = {
-  theme = "gruvbox",
+  theme = "one_light",
 
   hl_override = {
     Comment = { italic = true },
