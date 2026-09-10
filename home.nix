@@ -171,6 +171,8 @@ in
     wl-clipboard
     waybar
     swaybg
+    grim
+    slurp
 
     # audio
     # Wrap SuperCollider's entry-point binaries so they launch under pw-jack

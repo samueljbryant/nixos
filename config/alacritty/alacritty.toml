@@ -1,8 +1,8 @@
 [general]
 # import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/chocolate.toml"]
 # import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/blossom_light.toml"]
-import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/one_light.toml"]
-# import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/one_dark.toml"]
+# import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/one_light.toml"]
+import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/one_dark.toml"]
 
 [font]
 size = 10.0
