@@ -65,6 +65,8 @@ let
     "DF_SECRET"
     "ESPN_COOKIES"
     "CBS_COOKIES"
+    "BASECAMP_CLIENT_ID"
+    "BASECAMP_CLIENT_SECRET"
   ];
 in
 {
