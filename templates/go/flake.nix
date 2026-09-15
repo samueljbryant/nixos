@@ -26,6 +26,9 @@
             pkgs.gopls
             pkgs.delve
           ];
+          # Nix glibc treats the _FORTIFY_SOURCE warning as an error when cgo
+          # compiles without -0; needed for `dlv debug` and any cgo build.
+          CGO_CFLAGS = "-O2";
         };
       }
     );
