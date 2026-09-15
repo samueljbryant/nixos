@@ -1,5 +1,5 @@
 {
-  description = "Go dev shell (nixpkgs go + goimports + gopls)";
+  description = "Go dev shell (nixpkgs go + goimports + gopls + delve)";
 
   inputs = {
     nixpkgs.url = "nixpkgs/nixos-26.05";
@@ -24,8 +24,8 @@
           packages = [
             pkgs.go
             pkgs.gopls
+            pkgs.delve
           ];
-
         };
       }
     );
