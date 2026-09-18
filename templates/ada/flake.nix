@@ -25,6 +25,8 @@
             pkgs.gnat14Packages.gprbuild
             pkgs.alire
             pkgs.gnat14Packages.gnatprove
+            pkgs.gmp
+            pkgs.pkg-config
           ];
 
           # ada_language_server and gnatformat aren't in nixpkgs; install once via
