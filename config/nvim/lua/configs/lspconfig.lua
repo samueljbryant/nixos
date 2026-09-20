@@ -61,6 +61,10 @@ lspconfig("ty", {
   root_markers = { "pyproject.toml", "ruff.toml", ".ruff.toml", ".git" },
 })
 
+lspconfig("c3_lsp", {
+  cmd = { "c3-lsp" },
+})
+
 lspconfig("clangd", {
   -- cmd = { "clangd", "--extra-arg=-std=c32" },
 })

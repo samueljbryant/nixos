@@ -81,7 +81,7 @@ return {
     config = function()
       require("easy-dotnet").setup()
     end
-  }
+  },
   -- {
   --   'saghen/blink.cmp',
   --   dependencies = { 'rafamadriz/friendly-snippets' },
@@ -96,13 +96,13 @@ return {
   --   },
   -- },
 
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = {
+      ensure_installed = {
+        "vim", "lua", "vimdoc",
+        "html", "css", "c3",
+      },
+    },
+  },
 }

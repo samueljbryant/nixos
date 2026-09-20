@@ -18,6 +18,9 @@
 
     # Needed for lazy.nvim
     nodejs
+
+    # Needed for nvim-treesitter parser installs
+    tree-sitter
   ];
 
   home.sessionVariables = {
