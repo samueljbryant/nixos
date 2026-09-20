@@ -196,6 +196,10 @@ in
         done
       '';
     })
+    # PD
+    puredata
+    pd-else
+    cardinal
 
     # Keyboard layers
     kanata
@@ -207,6 +211,9 @@ in
     openmw
 
     steam
+
+    # Math
+    lean
 
   ];
 
