@@ -46,8 +46,9 @@ output "HDMI-1" {
 }
 
 layout {
-    gaps 12
+    gaps 16
     center-focused-column "never"
+
 
     preset-column-widths {
         proportion 0.33333
@@ -57,9 +58,16 @@ layout {
     default-column-width { proportion 0.5; }
 
     focus-ring {
+        off
         width 1
         active-color "#747c84"
         inactive-color "#1c2023"
+    }
+
+    border {
+        width 3
+        active-gradient from="#f00f" to="#0f05" angle=45 in="oklch longer hue"
+
     }
 }
 
@@ -188,6 +196,10 @@ binds {
 }
 
 // Window Settings
+window-rule {
+    geometry-corner-radius 12
+    clip-to-geometry true
+}
 
 window-rule {
   match app-id="Alacritty"
