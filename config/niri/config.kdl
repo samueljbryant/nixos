@@ -58,13 +58,14 @@ layout {
     default-column-width { proportion 0.5; }
 
     focus-ring {
-        off
+        // off
         width 1
         active-color "#747c84"
         inactive-color "#1c2023"
     }
 
     border {
+        off
         width 3
         active-gradient from="#f00f" to="#0f05" angle=45 in="oklch longer hue"
 

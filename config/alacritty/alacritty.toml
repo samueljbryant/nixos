@@ -2,11 +2,12 @@
 # import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/chocolate.toml"]
 # import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/blossom_light.toml"]
 # import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/one_light.toml"]
-import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/gruvbox_material_hard_dark.toml"]
+# import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/gruvbox_material_hard_dark.toml"]
+import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/gruvbox_dark.toml"]
 # import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/one_dark.toml"]
 
 [font]
-size = 10.0
+size = 11.0
 
 [font.normal]
 # family = "Inconsolata Nerd Font Mono"

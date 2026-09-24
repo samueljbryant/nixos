@@ -64,24 +64,6 @@ return {
   -- },
   { 'davidgranstrom/telescope-scdoc.nvim' },
   { 'kylechui/nvim-surround',             event = "VeryLazy" },
-  {
-    "GustavEikaas/easy-dotnet.nvim",
-    -- Neovim maps .sln -> "solution" and .csproj/.fsproj -> "xml", not their own
-    -- filetypes, so those need pattern-based `event` triggers instead of `ft`.
-    ft = { "cs", "fsharp" },
-    event = {
-      "BufReadPre *.sln",
-      "BufReadPre *.csproj",
-      "BufReadPre *.fsproj",
-      "BufNewFile *.sln",
-      "BufNewFile *.csproj",
-      "BufNewFile *.fsproj",
-    },
-    dependencies = { "nvim-lua/plenary.nvim", "mfussenegger/nvim-dap", },
-    config = function()
-      require("easy-dotnet").setup()
-    end
-  },
   -- {
   --   'saghen/blink.cmp',
   --   dependencies = { 'rafamadriz/friendly-snippets' },
