@@ -21,8 +21,8 @@
       {
         devShells.default = pkgs.mkShell {
           packages = [
-            pkgs.closure
-            pkgs.closure-lsp
+            pkgs.clojure
+            pkgs.clojure-lsp
             pkgs.jdk
             pkgs.rlwrap
           ];
