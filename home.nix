@@ -49,6 +49,7 @@ let
     "NTFY_API"
     "REDIS_HOST"
     "REDIS_PORT"
+    "DATAFORCE_API_KEY"
     "RT_SPORTS_API_KEY"
     "SHGN_API_KEY"
     "SLEEPER_LOGIN"

@@ -5,7 +5,7 @@
 # import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/gruvbox_material_hard_dark.toml"]
 # import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/gruvbox_dark.toml"]
 # import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/tokyo_night_enhanced.toml"]
-import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/tomorrow_night.toml"]
+import = ["~/nixos_dotfiles/config/alacritty/alacritty-theme/themes/nordfox.toml"]
 
 [font]
 size = 11.0

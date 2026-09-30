@@ -59,7 +59,7 @@ layout {
 
     focus-ring {
         // off
-        width 1
+        width 2
         active-color "#747c84"
         inactive-color "#1c2023"
     }
@@ -204,7 +204,7 @@ window-rule {
 
 window-rule {
   match app-id="Alacritty"
-  opacity 0.97
+  opacity 0.9
 }
 
 
