@@ -84,8 +84,8 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1791045130,
-        "narHash": "sha256-BsSR/npNnpHMFceybBZof1OU+1qcEcV9Ozkl2zmOP18=",
+        "lastModified": 1791046308,
+        "narHash": "sha256-V4BELq+cOX9zUYlRwjJoDtpG9WqYxQmnEwDD+q7rAkQ=",
         "path": "/home/sam/Development/work/nanit/wispr/wispr-flow-linux",
         "type": "path"
       },
