@@ -10,6 +10,11 @@
       url = "github:Mic92/sops-nix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    # Unofficial Wispr Flow Linux port. Not following our nixpkgs: its
+    # derivation needs electron_42, which may not exist yet on the
+    # nixos-26.05 branch we pin above, and the upstream flake already locks
+    # a known-good nixpkgs-unstable for it.
+    wispr-flow-linux.url = "github:wispr-flow-linux/wispr-flow-linux";
     # noctalia = {
     #   url = "github:noctalia-dev/noctalia-shell";
     #   inputs.nixpkgs.follows = "nixpkgs";

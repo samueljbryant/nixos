@@ -75,6 +75,7 @@ in
     inputs.sops-nix.homeManagerModules.sops
     ./modules/neovim.nix
     ./modules/claude_code.nix
+    ./modules/wispr-flow.nix
   ];
   home.username = "sam";
   home.homeDirectory = "/home/sam";

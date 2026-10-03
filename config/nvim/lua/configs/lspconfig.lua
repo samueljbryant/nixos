@@ -75,6 +75,9 @@ lspconfig("rust_analyzer", {
       check = {
         command = "clippy",
       },
+      cargo = {
+        target = "wasm32-unknown-unknown",
+      }
     },
   },
 })
