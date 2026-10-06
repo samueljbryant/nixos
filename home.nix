@@ -101,6 +101,9 @@ in
   # their bundled OpenSSL looks for /etc/ssl/cert.pem, which doesn't exist here.
   home.sessionVariables.SSL_CERT_FILE = "/etc/ssl/certs/ca-certificates.crt";
 
+  # go install puts binaries in $GOPATH/bin ($HOME/go/bin by default, GOBIN unset).
+  home.sessionPath = [ "$HOME/go/bin" ];
+
   # TODO: this can maybe be removed?
   xresources.properties = {
     "Xft.dpi" = 96;

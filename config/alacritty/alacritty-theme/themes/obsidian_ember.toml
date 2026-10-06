@@ -1,0 +1,27 @@
+# Colors (obsidian_ember)
+
+[colors.primary]
+background =  '#1e1e1e'
+foreground =  '#484848'
+
+# Normal colors
+[colors.normal]
+black   = '#1e1e1e'
+red     = '#ff6464'
+green   = '#729cff'
+yellow  = '#ffcc00'
+blue    = '#eeeeee'
+magenta = '#555555'
+cyan    = '#00c3a5'
+white   = '#d3d3d3'
+
+# Bright colors
+[colors.bright]
+black   = '#161616'
+red     = '#de878f'
+green   = '#76c793'
+yellow  = '#e0c247'
+blue    = '#ffffff'
+magenta = '#bd5e91'
+cyan    = '#00c3a5'
+white   = '#cdc0ad'
