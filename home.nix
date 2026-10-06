@@ -75,7 +75,7 @@ in
     inputs.sops-nix.homeManagerModules.sops
     ./modules/neovim.nix
     ./modules/claude_code.nix
-    ./modules/wispr-flow.nix
+    # ./modules/wispr-flow.nix  # disabled: path input narHash mismatch, see flake.lock
   ];
   home.username = "sam";
   home.homeDirectory = "/home/sam";
