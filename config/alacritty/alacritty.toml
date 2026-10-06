@@ -21,3 +21,8 @@ key = "Return"
 mods = "Shift"
 chars = "\u001B\r"
 
+# wispr-flow synths Ctrl+V (not Ctrl+Shift+V) to paste transcriptions
+[[keyboard.bindings]]
+key = "V"
+mods = "Control"
+action = "Paste"
