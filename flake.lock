@@ -37,11 +37,11 @@
     },
     "nixpkgs_2": {
       "locked": {
-        "lastModified": 1790510107,
-        "narHash": "sha256-EVMNYv7hYDDD9TGVT/hIyTYgpiXA8y3m5xIEIxuGNU0=",
+        "lastModified": 1791011291,
+        "narHash": "sha256-V6OBJccNKBo/ktknxlJXZChPoI0NE2lembArBO3CE9k=",
         "owner": "nixos",
         "repo": "nixpkgs",
-        "rev": "3181085bfd08663b6b9e60bc7a8395c2aaa741bd",
+        "rev": "73e728ddb6b7a12d18808f510813a13ee1fe4cce",
         "type": "github"
       },
       "original": {
@@ -84,10 +84,12 @@
         "nixpkgs": "nixpkgs_2"
       },
       "locked": {
-        "lastModified": 1791046308,
-        "narHash": "sha256-V4BELq+cOX9zUYlRwjJoDtpG9WqYxQmnEwDD+q7rAkQ=",
-        "path": "/home/sam/Development/work/nanit/wispr/wispr-flow-linux",
-        "type": "path"
+        "lastModified": 1791189668,
+        "narHash": "sha256-uUDi3uTMsVmO1GSrYX4h48jqy2g47TdUQZyR+cj6Jf8=",
+        "owner": "wispr-flow-linux",
+        "repo": "wispr-flow-linux",
+        "rev": "666297bf8447620969a8ea0f43f0684a786d154c",
+        "type": "github"
       },
       "original": {
         "owner": "wispr-flow-linux",
