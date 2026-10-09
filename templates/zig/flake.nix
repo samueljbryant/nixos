@@ -31,6 +31,7 @@
           packages = [
             zig
             pkgs.zls
+            pkgs.lldb # provides lldb-dap, used by nvim-dap (see config/nvim/lua/plugins/dap.lua)
           ];
         };
       }

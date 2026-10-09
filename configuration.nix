@@ -183,6 +183,11 @@
     nerd-fonts.gohufont
     nerd-fonts.victor-mono
     nerd-fonts.inconsolata
+    nerd-fonts.fira-code
+    nerd-fonts.fira-mono
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.ubuntu-mono
+    nerd-fonts.zed-mono
   ];
 
   fonts.fontconfig.defaultFonts.monospace = [
@@ -190,6 +195,11 @@
     "0xProto Nerd Font Mono"
     "Symbols Nerd Font Mono"
     "GohuFont Nerd Font Mono"
+    "FiraCode Nerd Font"
+    "FiraMono Nerd Font"
+    "JetBrainsMono Nerd Font"
+    "UbuntuMono Nerd Font"
+    "ZedMono Nerd Font"
   ];
 
   # Some programs need SUID wrappers, can be configured further or are

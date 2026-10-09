@@ -75,9 +75,9 @@ lspconfig("rust_analyzer", {
       check = {
         command = "clippy",
       },
-      cargo = {
-        target = "wasm32-unknown-unknown",
-      }
+      -- cargo = {
+      -- target = "wasm32-unknown-unknown",
+      -- }
     },
   },
 })
@@ -87,14 +87,6 @@ lspconfig("bashls", {
     cmd = { "bash-language-server", "start" },
     filetypes = { "bash", "sh" }
   }
-})
-
-lspconfig("hls", {
-  settings = {
-    haskell = {
-      formattingProvider = "ormolu",
-    },
-  },
 })
 
 

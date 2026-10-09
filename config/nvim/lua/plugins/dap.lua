@@ -53,9 +53,30 @@ return {
           cwd = "${workspaceFolder}",
           program = function()
             local out = vim.fn.getcwd() .. "/.dap-debug-bin"
-            local result = vim.fn.system { "odin", "build", ".", "-debug", "-out:" .. out }
+            local result = vim.fn.system { "odin", "build", "./src", "-debug", "-out:" .. out }
             if vim.v.shell_error ~= 0 then
               error("odin build failed:\n" .. result)
+            end
+            return out
+          end,
+          args = {},
+          stopOnEntry = false,
+        },
+      }
+
+      -- Zig has no dedicated dap plugin either; reuse the same lldb-dap adapter.
+      -- Resolved from $PATH, provided by nix dev shells (see templates/zig/flake.nix).
+      dap.configurations.zig = {
+        {
+          type = "lldb-dap",
+          request = "launch",
+          name = "Debug (zig build-exe src/main.zig)",
+          cwd = "${workspaceFolder}",
+          program = function()
+            local out = vim.fn.getcwd() .. "/.dap-debug-bin"
+            local result = vim.fn.system { "zig", "build-exe", "src/main.zig", "-O", "Debug", "-femit-bin=" .. out }
+            if vim.v.shell_error ~= 0 then
+              error("zig build-exe failed:\n" .. result)
             end
             return out
           end,

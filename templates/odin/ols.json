@@ -1,0 +1,5 @@
+{
+  "$schema": "https://raw.githubusercontent.com/DanielGavin/ols/master/misc/ols.schema.json",
+  "enable_vet_style": true,
+  "enable_vet_semicolon": true
+}
