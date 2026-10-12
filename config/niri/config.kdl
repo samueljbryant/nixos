@@ -198,8 +198,8 @@ binds {
 
 // Window Settings
 window-rule {
-    geometry-corner-radius 12
-    clip-to-geometry true
+    // geometry-corner-radius 12
+    // clip-to-geometry true
 }
 
 window-rule {

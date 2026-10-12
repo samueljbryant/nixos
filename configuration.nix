@@ -180,7 +180,6 @@
   fonts.packages = with pkgs; [
     nerd-fonts._0xproto
     nerd-fonts.symbols-only
-    nerd-fonts.gohufont
     nerd-fonts.victor-mono
     nerd-fonts.inconsolata
     nerd-fonts.fira-code
@@ -191,10 +190,9 @@
   ];
 
   fonts.fontconfig.defaultFonts.monospace = [
-    "Inconsolate Nerd Font Mono"
+    "Inconsolata Nerd Font Mono"
     "0xProto Nerd Font Mono"
     "Symbols Nerd Font Mono"
-    "GohuFont Nerd Font Mono"
     "FiraCode Nerd Font"
     "FiraMono Nerd Font"
     "JetBrainsMono Nerd Font"

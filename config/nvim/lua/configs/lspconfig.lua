@@ -1,7 +1,7 @@
 require("nvchad.configs.lspconfig").defaults()
 
 local servers = { "basedpyright", "cssls", "ruff", "lua_ls", "ty", "clangd", "rust_analyzer", "bashls", "gopls",
-  "texlab", "cmake-language-server", "ts_ls", "eslint", "ctags_ls", "sc_lsp", "nil_ls", "zls", "ols",
+  "texlab", "cmake-language-server", "ts_ls", "eslint", "ctags_ls", "sc_lsp", "nil_ls", "zls", "ols", "lem_ls",
 }
 local lspconfig = vim.lsp.config
 local luarocks_lib = {}
@@ -35,6 +35,15 @@ lspconfig("sc_lsp", {
   capabilities = caps,
   filetypes = { "supercollider", "scd", "sc" },
   root_markers = { "SuperCollider.toml" },
+})
+
+-- Resolve lem-language-server from PATH so it comes from the project's
+-- direnv/flake dev shell (see templates/common-lisp), which also documents
+-- the one-time global `ros`/qlot setup the binary needs.
+lspconfig("lem_ls", {
+  cmd = { "lem-language-server", "--stdio" },
+  filetypes = { "lisp" },
+  root_markers = { ".git" },
 })
 
 lspconfig("lua_ls", {
