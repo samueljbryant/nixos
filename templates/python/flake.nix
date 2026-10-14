@@ -20,7 +20,10 @@
 
         # Pin the interpreter declaratively. Change to python311/python312/etc.
         # per project — this is the reproducible part.
-        python = pkgs.python314;
+        # debugpy is bundled so nvim-dap-python's $PATH fallback (no project
+        # .venv) can still debug; projects with a uv-managed .venv should add
+        # their own `uv add --dev debugpy` to debug from inside the venv.
+        python = pkgs.python314.withPackages (ps: [ ps.debugpy ]);
 
         # Native libraries that binary wheels (numpy, pydantic-core, greenlet,
         # playwright, ...) dlopen at runtime. A nixpkgs Python can't lean on
