@@ -181,7 +181,6 @@ in
     swaybg
     grim
     slurp
-    fsel
 
     # audio
     # Wrap SuperCollider's entry-point binaries so they launch under pw-jack

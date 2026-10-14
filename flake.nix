@@ -19,6 +19,7 @@
     #   url = "github:noctalia-dev/noctalia-shell";
     #   inputs.nixpkgs.follows = "nixpkgs";
     # };
+    fsel.url = "github:Mjoyufull/fsel";
   };
 
   outputs =
