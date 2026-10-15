@@ -182,6 +182,9 @@ in
     grim
     slurp
 
+    # Browser
+    librewolf
+
     # audio
     # Wrap SuperCollider's entry-point binaries so they launch under pw-jack
     # (needed on NixOS so scsynth can find PipeWire's libjack). Wrapping at the

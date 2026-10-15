@@ -15,10 +15,6 @@
     # nixos-26.05 branch we pin above, and the upstream flake already locks
     # a known-good nixpkgs-unstable for it.
     wispr-flow-linux.url = "github:wispr-flow-linux/wispr-flow-linux";
-    # noctalia = {
-    #   url = "github:noctalia-dev/noctalia-shell";
-    #   inputs.nixpkgs.follows = "nixpkgs";
-    # };
     fsel.url = "github:Mjoyufull/fsel";
   };
 
