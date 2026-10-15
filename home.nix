@@ -219,9 +219,6 @@ in
 
     steam
 
-    # Math
-    lean
-
   ];
 
   # Notifications
