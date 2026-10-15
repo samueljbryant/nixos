@@ -62,6 +62,7 @@
   services.xserver = {
     enable = true;
     windowManager.oxwm.enable = true;
+    xkg.options = "caps:escape";
   };
   services.displayManager.ly.enable = true;
 
