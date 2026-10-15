@@ -2,12 +2,19 @@
   description = "SuperCollider project shell — puts the in-development sc_lsp on PATH for nvim";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-26.05";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, flake-utils, ... }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      flake-utils,
+      ...
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = import nixpkgs { inherit system; };
       in
@@ -20,5 +27,6 @@
         devShells.default = pkgs.mkShell {
           packages = [ ];
         };
-      });
+      }
+    );
 }

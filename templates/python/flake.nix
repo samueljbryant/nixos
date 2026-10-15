@@ -2,7 +2,7 @@
   description = "Python dev shell (nixpkgs python + uv)";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-26.05";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
 

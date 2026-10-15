@@ -2,7 +2,7 @@
   description = "C/C++ dev shell (clang-tools, lldb)";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-26.05";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
   };
 

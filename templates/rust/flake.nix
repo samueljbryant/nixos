@@ -2,14 +2,22 @@
   description = "Rust dev shell (rust-overlay)";
 
   inputs = {
-    nixpkgs.url = "nixpkgs/nixos-26.05";
+    nixpkgs.url = "nixpkgs/nixos-unstable";
     rust-overlay.url = "github:oxalica/rust-overlay";
     rust-overlay.inputs.nixpkgs.follows = "nixpkgs";
     flake-utils.url = "github:numtide/flake-utils";
   };
 
-  outputs = { self, nixpkgs, rust-overlay, flake-utils, ... }:
-    flake-utils.lib.eachDefaultSystem (system:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      rust-overlay,
+      flake-utils,
+      ...
+    }:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = import nixpkgs {
           inherit system;
@@ -20,7 +28,12 @@
         # swap the line below for:
         #   rustToolchain = pkgs.rust-bin.fromRustupToolchainFile ./rust-toolchain.toml;
         rustToolchain = pkgs.rust-bin.stable.latest.default.override {
-          extensions = [ "rust-src" "rust-analyzer" "clippy" "rustfmt" ];
+          extensions = [
+            "rust-src"
+            "rust-analyzer"
+            "clippy"
+            "rustfmt"
+          ];
           # targets = [ "wasm32-unknown-unknown" ];  # cross targets, if needed
         };
       in
@@ -36,5 +49,6 @@
           # So the `openssl-sys` crate links the Nix OpenSSL instead of vendoring.
           env.OPENSSL_NO_VENDOR = "1";
         };
-      });
+      }
+    );
 }
