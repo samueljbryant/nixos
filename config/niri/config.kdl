@@ -47,7 +47,7 @@ output "HDMI-1" {
 
 layout {
     gaps 0
-    center-focused-column "never"
+    center-focused-column "always"
 
 
     preset-column-widths {
@@ -99,7 +99,8 @@ binds {
     Mod+Slash {show-hotkey-overlay;}
     Mod+BackSpace { close-window; }
     Mod+Return hotkey-overlay-title="Terminal" { spawn "alacritty"; }
-    Mod+backslash      hotkey-overlay-title="App launcher" { spawn "alacritty" "-e" "fsel" "-d"; }
+    Mod+backslash      hotkey-overlay-title="App launcher" { spawn "fuzzel" ; }
+    // Mod+backslash      hotkey-overlay-title="App launcher" { spawn "alacritty" "-e" "fsel" "-d"; }
     // Home row, for navigation
     Mod+H     { focus-column-left; }
     Mod+L     { focus-column-right; }

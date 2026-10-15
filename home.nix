@@ -172,6 +172,7 @@ in
     redis
     zig
     proton-vpn-cli
+    tealdear
 
     # niri
     fuzzel
@@ -181,9 +182,6 @@ in
     swaybg
     grim
     slurp
-
-    # Browser
-    librewolf
 
     # audio
     # Wrap SuperCollider's entry-point binaries so they launch under pw-jack
