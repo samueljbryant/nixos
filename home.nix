@@ -172,7 +172,7 @@ in
     redis
     zig
     proton-vpn-cli
-    tealdear
+    tealdeer
 
     # niri
     fuzzel
