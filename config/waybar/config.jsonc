@@ -1,41 +1,84 @@
-{
-  "layer": "top",
-  "position": "top",
-  "height": 0,
-  "spacing": 6,
+[
+  {
+    "output": "HDMI-A-1",
+    "width": 1280,
+    "layer": "top",
+    "position": "top",
+    "height": 0,
+    "spacing": 6,
 
-  // niri-native modules — this is what stock waybar lacks
-  "modules-left": ["niri/workspaces", "niri/window"],
-  "modules-center": ["clock"],
-  "modules-right": ["tray", "pulseaudio", "cpu", "memory", "battery", "network"],
+    // niri-native modules — this is what stock waybar lacks
+    "modules-left": ["niri/workspaces", "niri/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "pulseaudio",  "battery", "network"],
 
-  "niri/workspaces": { "format": "{index}" },
-  "niri/window": { "format": "{title}", "max-length": 50, "tooltip": false },
+    "niri/workspaces": { "format": "{index}" },
+    "niri/window": { "format": "{title}", "max-length": 50, "tooltip": false },
 
-  "clock": {
-    "format": "{:%a %d %b  %H:%M}",
-    "tooltip-format": "<tt>{calendar}</tt>"
+    "clock": {
+      "format": "{:%a %d %b  %H:%M}",
+      "tooltip-format": "<tt>{calendar}</tt>"
+    },
+    "battery": {
+      "format": "{icon} {capacity}%",
+      "format-charging": "󰂄 {capacity}%",
+      "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+      "states": { "warning": 30, "critical": 15 }
+    },
+    "network": {
+      "format-wifi": " {essid}",
+      "format-ethernet": " wired",
+      "format-disconnected": " off",
+      "tooltip-format": "{ifname}: {ipaddr}"
+    },
+    // pulseaudio module talks to your pipewire-pulse; on-click mutes via wpctl
+    "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-muted": " muted",
+      "format-icons": { "default": ["", "", ""] },
+      "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    },
+    "tray": { "spacing": 8 }
   },
-  "cpu":    { "format": " {usage}%", "interval": 5 },
-  "memory": { "format": " {percentage}%", "interval": 5 },
-  "battery": {
-    "format": "{icon} {capacity}%",
-    "format-charging": "󰂄 {capacity}%",
-    "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
-    "states": { "warning": 30, "critical": 15 }
-  },
-  "network": {
-    "format-wifi": " {essid}",
-    "format-ethernet": " wired",
-    "format-disconnected": " off",
-    "tooltip-format": "{ifname}: {ipaddr}",
-  },
-  // pulseaudio module talks to your pipewire-pulse; on-click mutes via wpctl
-  "pulseaudio": {
-    "format": "{icon} {volume}%",
-    "format-muted": " muted",
-    "format-icons": { "default": ["", "", ""] },
-    "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
-  },
-  "tray": { "spacing": 8 }
-}
+  {
+    "output": "eDP-1",
+    "width": 960,
+    "layer": "top",
+    "position": "top",
+    "height": 0,
+    "spacing": 6,
+
+    // niri-native modules — this is what stock waybar lacks
+    "modules-left": ["niri/workspaces", "niri/window"],
+    "modules-center": ["clock"],
+    "modules-right": ["tray", "pulseaudio",  "battery", "network"],
+
+    "niri/workspaces": { "format": "{index}" },
+    "niri/window": { "format": "{title}", "max-length": 50, "tooltip": false },
+
+    "clock": {
+      "format": "{:%a %d %b  %H:%M}",
+      "tooltip-format": "<tt>{calendar}</tt>"
+    },
+    "battery": {
+      "format": "{icon} {capacity}%",
+      "format-charging": "󰂄 {capacity}%",
+      "format-icons": ["󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+      "states": { "warning": 30, "critical": 15 }
+    },
+    "network": {
+      "format-wifi": " {essid}",
+      "format-ethernet": " wired",
+      "format-disconnected": " off",
+      "tooltip-format": "{ifname}: {ipaddr}"
+    },
+    // pulseaudio module talks to your pipewire-pulse; on-click mutes via wpctl
+    "pulseaudio": {
+      "format": "{icon} {volume}%",
+      "format-muted": " muted",
+      "format-icons": { "default": ["", "", ""] },
+      "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
+    },
+    "tray": { "spacing": 8 }
+  }
+]

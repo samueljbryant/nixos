@@ -46,8 +46,8 @@ output "HDMI-1" {
 }
 
 layout {
-    gaps 0
-    center-focused-column "always"
+    gaps 16
+    center-focused-column "never"
 
 
     preset-column-widths {

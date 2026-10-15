@@ -59,6 +59,10 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
+  services.xserver = {
+    enable = true;
+    windowManager.oxwm.enable = true;
+  };
   services.displayManager.ly.enable = true;
 
   services.redis.servers."" = {
