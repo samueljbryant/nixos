@@ -31,6 +31,7 @@ let
     niri = "niri";
     waybar = "waybar";
     kanata = "kanata";
+    owxm = "oxwm";
     # starship reads ~/.config/starship.toml (a bare FILE, not a dir), so key
     # this by the filename — the map then symlinks that exact path.
     "starship.toml" = "starship/starship.toml";
