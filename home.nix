@@ -217,9 +217,10 @@ in
 
     # Games
     openmw
-
     steam
 
+    # Emulation
+    virtualbox
   ];
 
   # Notifications
