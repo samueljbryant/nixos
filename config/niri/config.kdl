@@ -46,7 +46,7 @@ output "HDMI-1" {
 }
 
 layout {
-    gaps 16
+    gaps 0
     center-focused-column "never"
 
 
@@ -59,7 +59,7 @@ layout {
 
     focus-ring {
         // off
-        width 2
+        width 1
         active-color "#747c84"
         inactive-color "#1c2023"
     }
@@ -72,6 +72,9 @@ layout {
     }
 }
 
+animations {
+  off
+}
 
 // Run legacy X11 apps: niri starts xwayland-satellite and sets DISPLAY for us.
 xwayland-satellite {
@@ -205,7 +208,7 @@ window-rule {
 
 window-rule {
   match app-id="Alacritty"
-  opacity 0.8
+  opacity 0.85
 }
 
 

@@ -29,16 +29,16 @@ local terminal = "alacritty"
 -- local colors = require("colors.lua") and make colors.lua a file
 -- in the ~/.config/oxwm directory
 local colors = {
-    fg = "#bbbbbb",
-    red = "#f7768e",
-    bg = "#1a1b26",
-    cyan = "#0db9d7",
-    green = "#9ece6a",
-    lavender = "#a9b1d6",
-    light_blue = "#7aa2f7",
-    grey = "#bbbbbb",
-    blue = "#6dade3",
-    purple = "#ad8ee6",
+  fg = "#bbbbbb",
+  red = "#f7768e",
+  bg = "#1a1b26",
+  cyan = "#0db9d7",
+  green = "#9ece6a",
+  lavender = "#a9b1d6",
+  light_blue = "#7aa2f7",
+  grey = "#bbbbbb",
+  blue = "#6dade3",
+  purple = "#ad8ee6",
 }
 
 -- Workspace tags - can be numbers, names, or icons (requires a Nerd Font)
@@ -46,56 +46,58 @@ local tags = { "1", "2", "3", "4", "5", "6", "7", "8", "9" }
 -- local tags = { "", "󰊯", "", "", "󰙯", "󱇤", "", "󱘶", "󰧮" } -- Example of nerd font icon tags
 
 -- Font for the status bar (use "fc-list" to see available fonts)
-local bar_font = "monospace:style=Bold:size=10"
+-- local bar_font = "monospace:style=Bold:size=10"
+local bar_font = "UbuntuMono Nerd Font Mono:style=Bold:size=10"
 
 -- Define your blocks
 -- Similar to widgets in qtile, or dwmblocks
 local blocks = {
-    oxwm.bar.block.ram({
-        format = "Ram: {used}/{total} GB",
-        interval = 5,
-        color = colors.light_blue,
-        underline = true,
-    }),
-    oxwm.bar.block.static({
-        text = "│",
-        interval = 999999999,
-        color = colors.lavender,
-        underline = false,
-    }),
-    oxwm.bar.block.shell({
-        format = "{}",
-        command = "uname -r",
-        interval = 999999999,
-        color = colors.red,
-        underline = true,
-    }),
-    oxwm.bar.block.static({
-        text = "│",
-        interval = 999999999,
-        color = colors.lavender,
-        underline = false,
-    }),
-    oxwm.bar.block.datetime({
-        format = "{}",
-        date_format = "%a, %b %d - %-I:%M %P",
-        interval = 1,
-        color = colors.cyan,
-        underline = true,
-    }),
-    -- Uncomment to add battery status (useful for laptops)
-    oxwm.bar.block.battery({
-        format = "Bat: {}%",
-        charging = "⚡ Bat: {}%",
-        discharging = "- Bat: {}%",
-        full = "✓ Bat: {}%",
-        interval = 30,
-        color = colors.green,
-        underline = true,
-        -- click: run a command when the block is clicked
-        -- click = "alacritty -e btop",
-        -- click = { command = "bluetui", floating = true },
-    }),
+  oxwm.
+      oxwm.bar.block.ram({
+    format = "Ram: {used}/{total} GB",
+    interval = 5,
+    color = colors.light_blue,
+    underline = true,
+  }),
+  oxwm.bar.block.static({
+    text = "│",
+    interval = 999999999,
+    color = colors.lavender,
+    underline = false,
+  }),
+  oxwm.bar.block.shell({
+    format = "{}",
+    command = "uname -r",
+    interval = 999999999,
+    color = colors.red,
+    underline = true,
+  }),
+  oxwm.bar.block.static({
+    text = "│",
+    interval = 999999999,
+    color = colors.lavender,
+    underline = false,
+  }),
+  oxwm.bar.block.datetime({
+    format = "{}",
+    date_format = "%a, %b %d - %-I:%M %P",
+    interval = 1,
+    color = colors.cyan,
+    underline = true,
+  }),
+  -- Uncomment to add battery status (useful for laptops)
+  oxwm.bar.block.battery({
+    format = "Bat: {}%",
+    charging = "⚡ Bat: {}%",
+    discharging = "- Bat: {}%",
+    full = "✓ Bat: {}%",
+    interval = 30,
+    color = colors.green,
+    underline = true,
+    -- click: run a command when the block is clicked
+    -- click = "alacritty -e btop",
+    -- click = { command = "bluetui", floating = true },
+  }),
 };
 
 -------------------------------------------------------------------------------
@@ -146,7 +148,7 @@ oxwm.gaps.set_smart(enabled)
 -- Inner gaps (horizontal, vertical) in pixels
 oxwm.gaps.set_inner(5, 5)
 -- Outer gaps (horizontal, vertical) in pixels
-oxwm.gaps.set_outer(5, 5)
+oxwm.gaps.set_outer(0, 0)
 
 -------------------------------------------------------------------------------
 -- Window Rules
@@ -321,8 +323,8 @@ oxwm.key.bind({ modkey, "Control", "Shift" }, "9", oxwm.tag.toggletag(8))
 -- Format: {{modifiers}, key1}, {{modifiers}, key2}, ...
 -- Example: Press Mod4+Space, then release and press T to spawn a terminal
 oxwm.key.chord({
-    { { modkey }, "Space" },
-    { {},         "T" }
+  { { modkey }, "Space" },
+  { {},         "T" }
 }, oxwm.spawn_terminal())
 
 -------------------------------------------------------------------------------
@@ -331,7 +333,7 @@ oxwm.key.chord({
 -- Commands to run once when OXWM starts
 -- Uncomment and modify these examples, or add your own
 
--- oxwm.autostart("picom")
--- oxwm.autostart("feh --bg-scale ~/wallpaper.jpg")
--- oxwm.autostart("dunst")
+oxwm.autostart("picom")
+oxwm.autostart("feh --bg-scale ./backgrounds/ito_town.png")
+oxwm.autostart("dunst")
 -- oxwm.autostart("nm-applet")

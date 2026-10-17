@@ -100,6 +100,14 @@ lspconfig("bashls", {
 
 
 
+lspconfig("nil_ls", {
+  settings = {
+    ["nil"] = {
+      nix = { flake = { autoArchive = true, autoEvalInputs = false } },
+    },
+  },
+})
+
 lspconfig("eslint", {
   cmd = { "vscode-eslint-language-server", "--stdio" },
   filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },

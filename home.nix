@@ -30,7 +30,6 @@ let
     posting = "posting";
     niri = "niri";
     waybar = "waybar";
-    kanata = "kanata";
     owxm = "oxwm";
     # starship reads ~/.config/starship.toml (a bare FILE, not a dir), so key
     # this by the filename — the map then symlinks that exact path.
@@ -209,9 +208,6 @@ in
     pd-else
     cardinal
 
-    # Keyboard layers
-    kanata
-
     # website
     flyctl
 
@@ -221,6 +217,11 @@ in
 
     # Emulation
     virtualbox
+
+    # X11 stuff
+    picom
+    feh
+    dunst
   ];
 
   # Notifications

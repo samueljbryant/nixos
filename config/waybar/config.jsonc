@@ -1,7 +1,7 @@
 [
   {
     "output": "HDMI-A-1",
-    "width": 1280,
+    // "width": 1280,
     "layer": "top",
     "position": "top",
     "height": 0,
@@ -42,7 +42,7 @@
   },
   {
     "output": "eDP-1",
-    "width": 960,
+    // "width": 960,
     "layer": "top",
     "position": "top",
     "height": 0,
