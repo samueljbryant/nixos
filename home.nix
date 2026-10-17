@@ -113,7 +113,7 @@ in
     enable = true;
     settings = {
       animations = 0;
-      bordercolor = "0x595959aa";
+      # bordercolor = "0x595959aa";
       bind = [
         "SUPER,r,reload_config"
         "SUPER,f,spawn,fuzzel"
