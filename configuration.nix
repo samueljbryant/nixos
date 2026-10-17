@@ -105,6 +105,9 @@
   # virtualisation.docker.enable = true;
   virtualisation.podman.enable = true;
 
+  # Allow virtualisation via virtual box
+  virtualisation.virtualbox.host.enable = true;
+
   # Define a user account. Don't forget to set a password with ‘passwd’.
   users.users.sam = {
     isNormalUser = true;
