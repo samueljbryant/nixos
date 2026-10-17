@@ -182,6 +182,7 @@ in
     swaybg
     grim
     slurp
+    tmux
 
     # audio
     # Wrap SuperCollider's entry-point binaries so they launch under pw-jack
