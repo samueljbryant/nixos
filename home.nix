@@ -217,8 +217,6 @@ in
     openmw
     steam
 
-    # Emulation
-    virtualbox
   ];
 
   # Notifications
