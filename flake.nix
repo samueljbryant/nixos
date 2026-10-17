@@ -16,6 +16,12 @@
     # a known-good nixpkgs-unstable for it.
     wispr-flow-linux.url = "github:wispr-flow-linux/wispr-flow-linux";
     fsel.url = "github:Mjoyufull/fsel";
+
+    # Window manager based on dwm, but for wayland
+    mango = {
+      url = "github:mangowm/mango";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs =

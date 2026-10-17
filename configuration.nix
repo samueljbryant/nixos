@@ -13,11 +13,11 @@
   # limit the number of nix generations we track, cosmetic only
   boot.loader.systemd-boot.configurationLimit = 10;
 
-  # Clean up generations older than 30d, runs weekly
+  # Clean up generations older than 14d, runs daily
   nix.gc = {
     automatic = true;
     dates = "weekly";
-    options = "--delete-older-than 30d";
+    options = "--delete-older-than 14d";
   };
 
   # dedup identical files in the store
@@ -59,12 +59,6 @@
   #   useXkbConfig = true; # use xkb.options in tty.
   # };
 
-  services.xserver = {
-    enable = true;
-    windowManager.oxwm.enable = true;
-    xkb.options = "caps:escape";
-    enableTearFree = true;
-  };
   services.displayManager.ly.enable = true;
 
   services.redis.servers."" = {
@@ -131,7 +125,6 @@
   programs.firefox.enable = true;
   programs.niri.enable = true;
   programs.sway.enable = true;
-
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [

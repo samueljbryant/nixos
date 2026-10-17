@@ -30,7 +30,6 @@ let
     posting = "posting";
     niri = "niri";
     waybar = "waybar";
-    owxm = "oxwm";
     # starship reads ~/.config/starship.toml (a bare FILE, not a dir), so key
     # this by the filename — the map then symlinks that exact path.
     "starship.toml" = "starship/starship.toml";
@@ -76,6 +75,7 @@ in
     ./modules/neovim.nix
     ./modules/claude_code.nix
     # ./modules/wispr-flow.nix  # disabled: path input narHash mismatch, see flake.lock
+    inputs.mango.hmModules.mango
   ];
   home.username = "sam";
   home.homeDirectory = "/home/sam";
@@ -107,6 +107,19 @@ in
   # TODO: this can maybe be removed?
   xresources.properties = {
     "Xft.dpi" = 96;
+  };
+
+  wayland.windowManager.mango = {
+    enable = true;
+    settings = {
+      animations = 0;
+      bordercolor = "0x595959aa";
+      bind = [
+        "SUPER,r,reload_config"
+        "SUPER,f,spawn,fuzzel"
+        "SUPER,Return,spawn,alacritty"
+      ];
+    };
   };
 
   programs.bash = {
@@ -217,11 +230,6 @@ in
 
     # Emulation
     virtualbox
-
-    # X11 stuff
-    picom
-    feh
-    dunst
   ];
 
   # Notifications

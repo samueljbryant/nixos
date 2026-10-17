@@ -114,11 +114,13 @@ binds {
     Mod+I     { move-column-right; };
     Mod+O     { move-window-up; }
     Mod+P     { move-window-down; }
+
     // Workspaces, layer above home row, prevent weird stretch
-    Mod+7 { focus-workspace 1; }
-    Mod+8 { focus-workspace 2; }
-    Mod+9 { focus-workspace 3; }
-    Mod+0 { focus-workspace 4; }
+    Mod+1 { focus-workspace 1; }
+    Mod+2 { focus-workspace 2; }
+    Mod+3 { focus-workspace 3; }
+    Mod+4 { focus-workspace 4; }
+
     // Focus workspaces
     Mod+Minus  { focus-workspace-up; }
     Mod+Equal { focus-workspace-down; }
@@ -208,7 +210,7 @@ window-rule {
 
 window-rule {
   match app-id="Alacritty"
-  opacity 0.85
+  // opacity 0.85
 }
 
 
