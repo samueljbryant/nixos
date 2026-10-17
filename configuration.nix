@@ -63,6 +63,7 @@
     enable = true;
     windowManager.oxwm.enable = true;
     xkb.options = "caps:escape";
+    enableTearFree = true;
   };
   services.displayManager.ly.enable = true;
 
