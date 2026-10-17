@@ -125,6 +125,7 @@
   programs.firefox.enable = true;
   programs.niri.enable = true;
   programs.sway.enable = true;
+  programs.mango.enable = true;
   programs.nix-ld = {
     enable = true;
     libraries = with pkgs; [

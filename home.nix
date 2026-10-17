@@ -75,7 +75,6 @@ in
     ./modules/neovim.nix
     ./modules/claude_code.nix
     # ./modules/wispr-flow.nix  # disabled: path input narHash mismatch, see flake.lock
-    inputs.mango.hmModules.mango
   ];
   home.username = "sam";
   home.homeDirectory = "/home/sam";
@@ -107,19 +106,6 @@ in
   # TODO: this can maybe be removed?
   xresources.properties = {
     "Xft.dpi" = 96;
-  };
-
-  wayland.windowManager.mango = {
-    enable = true;
-    settings = {
-      animations = 0;
-      # bordercolor = "0x595959aa";
-      bind = [
-        "SUPER,r,reload_config"
-        "SUPER,f,spawn,fuzzel"
-        "SUPER,Return,spawn,alacritty"
-      ];
-    };
   };
 
   programs.bash = {
