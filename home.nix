@@ -183,7 +183,6 @@ in
     swaybg
     grim
     slurp
-    wl-copy
     tmux
     swayimg
 
