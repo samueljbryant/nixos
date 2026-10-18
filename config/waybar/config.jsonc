@@ -7,13 +7,12 @@
     "height": 0,
     "spacing": 6,
 
-    // niri-native modules — this is what stock waybar lacks
-    "modules-left": ["niri/workspaces", "niri/window"],
+    "modules-left": ["ext/workspaces", "ext/window"],
     "modules-center": ["clock"],
     "modules-right": ["tray", "pulseaudio",  "battery", "network"],
 
-    "niri/workspaces": { "format": "{index}" },
-    "niri/window": { "format": "{title}", "max-length": 50, "tooltip": false },
+    //"ext/workspaces": { "format": "{index}" },
+    "ext/window": { "format": "{title}", "max-length": 50, "tooltip": false },
 
     "clock": {
       "format": "{:%a %d %b  %H:%M}",
@@ -48,13 +47,10 @@
     "height": 0,
     "spacing": 6,
 
-    // niri-native modules — this is what stock waybar lacks
-    "modules-left": ["niri/workspaces", "niri/window"],
+    "modules-left": ["ext/workspaces", "ext/window"],
     "modules-center": ["clock"],
     "modules-right": ["tray", "pulseaudio",  "battery", "network"],
 
-    "niri/workspaces": { "format": "{index}" },
-    "niri/window": { "format": "{title}", "max-length": 50, "tooltip": false },
 
     "clock": {
       "format": "{:%a %d %b  %H:%M}",

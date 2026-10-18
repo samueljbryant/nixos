@@ -183,7 +183,9 @@ in
     swaybg
     grim
     slurp
+    wl-copy
     tmux
+    swayimg
 
     # audio
     # Wrap SuperCollider's entry-point binaries so they launch under pw-jack

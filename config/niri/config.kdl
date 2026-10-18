@@ -46,7 +46,7 @@ output "HDMI-1" {
 }
 
 layout {
-    gaps 0
+    gaps 16
     center-focused-column "never"
 
 
@@ -58,7 +58,7 @@ layout {
     default-column-width { proportion 1.0; }
 
     focus-ring {
-        // off
+        off
         width 1
         active-color "#747c84"
         inactive-color "#1c2023"
@@ -215,7 +215,7 @@ window-rule {
 
 window-rule {
   match app-id="Alacritty"
-  // opacity 0.85
+  opacity 0.85
 }
 
 
