@@ -2,3 +2,5 @@
 
 waybar -c ~/.config/waybar/config.jsonc -s ~/.config/waybar/style.css >/dev/null 2>&1 &
 swaybg -i ~/.config/mango/backgrounds/ito_town.png 2>&1 &
+# Help resolve race conditions with monitors
+(sleep 2 && mmsg dispatch reload_config) &
