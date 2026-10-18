@@ -1,2 +1,2 @@
-#!/usr/bin/env/bash
+#!/usr/bin/env bash
 grim -l 0 -g "$(slurp)" - | wl-copy
